@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paso de Voleibol</string>
+    <string name="instruct">Elija el valor de pase para agregar al total.</string>
+    <string name="button_zero">0</string>
+    <string name="button_one">1</string>
+    <string name="button_two">2</string>
+    <string name="button_three">3</string>
+    <string name="passing_stats">Promedio (0): 0 Cero: 0 Uno: 0 Dos: 0 Tres: 0</string>
+    <string name="button_reset">Reiniciar</string>
+    <string name="one_player">1 Jugador</string>
+    <string name="two_players">2 Jugadores</string>
+    <string name="p1">Jugador 1</string>
+    <string name="p2">Jugador 2</string>
+    <string name="about">Acerca de</string>
+    <string name="title_activity_about">Acerca de Estadísticas de pase de voleibol</string>
+    <string name="about_title">Estadísticas de pase de voleibol</string>
+    <string name="copyright">Derechos de Autor © 2018 Cody J. King. Todos Los Derechos Reservados</string>
+    <string name="privacy_policy_link"><a href="http://codyjking.com/privacy-policy.html">Política de Privacidad</a></string>
+    <string name="version">Versión V2.0.1</string>
+    <string name="about_icon_description">Icono de la Aplicación</string>
+    <string name="player1_name_hint">Nombre del Jugador 1</string>
+    <string name="player2_name_hint">Nombre del Jugador 2</string>
+</resources>

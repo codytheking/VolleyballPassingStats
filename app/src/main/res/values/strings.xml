@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Volleyball Passing</string>
+    <string name="instruct">Choose the pass value to add to the total.</string>
+    <string name="button_zero">0</string>
+    <string name="button_one">1</string>
+    <string name="button_two">2</string>
+    <string name="button_three">3</string>
+    <string name="passing_stats">Average (0): 0\n Zeros: 0 Ones: 0 Twos: 0 Threes: 0</string>
+    <string name="button_reset">Reset</string>
+    <string name="one_player">1 Player</string>
+    <string name="two_players">2 Players</string>
+    <string name="p1">Player 1</string>
+    <string name="p2">Player 2</string>
+    <string name="about">About</string>
+    <string name="title_activity_about">About Volleyball Passing Stats</string>
+    <string name="about_title">Volleyball Passing Stats</string>
+    <string name="copyright">Copyright © 2018 Cody J. King. All rights reserved.</string>
+    <string name="privacy_policy_link"><a href="http://codyjking.com/privacy-policy.html">Privacy Policy</a></string>
+    <string name="version">Version V2.0.1</string>
+    <string name="about_icon_description">App icon</string>
+    <string name="player1_name_hint">Player 1 name</string>
+    <string name="player2_name_hint">Player 2 name</string>
+</resources>
