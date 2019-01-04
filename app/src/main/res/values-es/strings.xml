@@ -2,10 +2,6 @@
 <resources>
     <string name="app_name">Paso de Voleibol</string>
     <string name="instruct">Elija el valor de pase para agregar al total.</string>
-    <string name="button_zero">0</string>
-    <string name="button_one">1</string>
-    <string name="button_two">2</string>
-    <string name="button_three">3</string>
     <string name="passing_stats">Promedio (0): 0 Cero: 0 Uno: 0 Dos: 0 Tres: 0</string>
     <string name="button_reset">Reiniciar</string>
     <string name="one_player">1 Jugador</string>
@@ -17,8 +13,24 @@
     <string name="about_title">Estadísticas de pase de voleibol</string>
     <string name="copyright">Derechos de Autor © 2018 Cody J. King. Todos Los Derechos Reservados</string>
     <string name="privacy_policy_link"><a href="http://codyjking.com/privacy-policy.html">Política de Privacidad</a></string>
-    <string name="version">Versión V2.0.1</string>
+    <string name="version">Versión V</string>
     <string name="about_icon_description">Icono de la Aplicación</string>
     <string name="player1_name_hint">Nombre del Jugador 1</string>
     <string name="player2_name_hint">Nombre del Jugador 2</string>
+    <string name="p3">Jugador 3</string>
+    <string name="player3_name_hint">Nombre del Jugador 3</string>
+    <string name="p4">Jugador 4</string>
+    <string name="p5">Jugador 5</string>
+    <string name="p6">Jugador 6</string>
+    <string name="player4_name_hint">Nombre del Jugador 4</string>
+    <string name="player5_name_hint">Nombre del Jugador 5</string>
+    <string name="player6_name_hint">Nombre del Jugador 6</string>
+    <string name="settings">Ajustes</string>
+    <string name="rb_1p">1 Jugador</string>
+    <string name="rb_2p">2 Jugadores</string>
+    <string name="rb_3p">3 Jugadores</string>
+    <string name="rb_4p">4 Jugadores</string>
+    <string name="rb_5p">5 Jugadores</string>
+    <string name="rb_6p">"6 Jugadores "</string>
+    <string name="settings_title">Elige el número de jugadores</string>
 </resources>
