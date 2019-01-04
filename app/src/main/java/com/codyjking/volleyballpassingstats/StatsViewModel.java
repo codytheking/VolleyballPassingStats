@@ -5,15 +5,30 @@ import java.util.Locale;
 
 
 public class StatsViewModel extends ViewModel {
-    private int[] total = {0, 0};
-    private int[] numVals = {0, 0};
-    private double[] average = {0.0, 0.0};
-    private int[][] values = new int[4][4];
+    private int[] totals;
+    private int[] numVals;
+    private double[] average;
+    private int[][] values;
 
-    public StatsViewModel() {}
+    private final int NUM_PLAYERS = 6;
+
+    public StatsViewModel() {
+        totals = new int[NUM_PLAYERS];
+        numVals = new int[NUM_PLAYERS];
+        average = new double[NUM_PLAYERS];
+        values = new int[NUM_PLAYERS][4];
+
+        for(int i = 0; i < NUM_PLAYERS; i++) {
+            reset(i);
+        }
+    }
+
+    public int getNumPlayers() {
+        return NUM_PLAYERS;
+    }
 
     public void reset(int index) {
-        total[index] = 0;
+        totals[index] = 0;
         numVals[index] = 0;
         average[index] = 0.0;
 
@@ -23,9 +38,9 @@ public class StatsViewModel extends ViewModel {
 
     public void addToTotal(int index, int val) {
         numVals[index]++;
-        total[index] += val;
+        totals[index] += val;
         values[index][val]++;
-        average[index] = total[index] / (double) numVals[index];
+        average[index] = totals[index] / (double) numVals[index];
         average[index] = Double.parseDouble(String.format(Locale.ROOT,"%,.2f", average[index]));
     }
 
