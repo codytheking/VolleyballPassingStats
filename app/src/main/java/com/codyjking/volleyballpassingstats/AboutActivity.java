@@ -1,5 +1,7 @@
 package com.codyjking.volleyballpassingstats;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +20,17 @@ public class AboutActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        String versionCode = "Version V";
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionCode += packageInfo.versionName;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        ((TextView) findViewById(R.id.version_text)).setText(versionCode);
+
         TextView v = findViewById(R.id.privacy_policy_text);
         v.setMovementMethod(LinkMovementMethod.getInstance());
     }
