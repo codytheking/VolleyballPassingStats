@@ -1,0 +1,14 @@
+# Xcode
+*.xcodeproj
+VolleyballPassingStats.xcodeproj/
+*.app
+*.xctest
+
+# Images and Media
+Assets.xcassets
+*.png
+*.jpg
+
+# Mac OS
+.DS_Store
+
