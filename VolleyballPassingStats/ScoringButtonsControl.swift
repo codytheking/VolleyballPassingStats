@@ -12,7 +12,7 @@ import UIKit
     
     //MARK: Properties
     private var scoringButtons = [UIButton]()
-    var rating = 0
+    var scores = [0, 0, 0, 0]
     
     @IBInspectable var buttonSize: CGSize = CGSize(width: 60.0, height: 40.0) {
         didSet {
@@ -36,6 +36,20 @@ import UIKit
     required init(coder: NSCoder) {
         super.init(coder: coder)
         setupButtons()
+    }
+    
+    
+    // MARK: Button Action
+    
+    @objc func scoringButtonTapped(button: UIButton) {
+        guard let index = scoringButtons.firstIndex(of: button) else {
+            fatalError("The button, \(button), is not in the scoringButtons array: \(scoringButtons)")
+        }
+        
+        print("Button pressed 👍")
+        
+        // TODO: Do stuff with scoring
+        
     }
     
     
@@ -79,7 +93,7 @@ import UIKit
             button.widthAnchor.constraint(equalToConstant: buttonSize.width).isActive = true
             
             // Setup the button action
-            button.addTarget(self, action: #selector(ScoringButtonsControl.scoreButtonTapped(button:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(ScoringButtonsControl.scoringButtonTapped(button:)), for: .touchUpInside)
             
             // Add the button to the stack
             addArrangedSubview(button)
@@ -88,13 +102,4 @@ import UIKit
             scoringButtons.append(button)
         }
     }
-    
-    
-    
-    
-    @objc func scoreButtonTapped(button: UIButton) {
-        print("Button pressed 👍")
-    }
-    
-    
 }
