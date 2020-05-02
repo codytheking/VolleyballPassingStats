@@ -25,15 +25,19 @@ class Player {
     
     // MARK: Initialization
      
-    init?(_ name: String) {
+    init?(_ name: String?) {
         // The name must not be empty
-        guard !name.isEmpty else {
+        guard name != nil else {
             return nil
         }
         
-        self.name = name
+        self.name = name!
         average = 0
         values = [0, 0, 0, 0]
+    }
+    
+    convenience init?() {
+        self.init("")
     }
     
     
@@ -46,6 +50,11 @@ class Player {
     func reset() {
         average = 0
         values = [0, 0, 0, 0]
+    }
+    
+    func resetAll() {
+        name = ""
+        reset()
     }
     
     

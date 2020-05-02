@@ -8,17 +8,18 @@
 
 import UIKit
 
-class PlayerTableViewController: UITableViewController, PlayerTableViewCellDelegate {
+class PlayerTableViewController: UITableViewController, UITabBarControllerDelegate, PlayerTableViewCellDelegate {
+    
 
     // MARK: Properties
     
     var players = [Player]()
-    
+    var visiblePlayers = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.tabBarController?.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,22 +27,56 @@ class PlayerTableViewController: UITableViewController, PlayerTableViewCellDeleg
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        guard let player = Player("King") else {
-            fatalError("Unable to instantiate Player object.")
+        for _ in 1...OptionsViewController.maxNumPlayers
+        {
+            guard let player = Player() else {
+                fatalError("Unable to instantiate Player object.")
+            }
+            players.append(player)
+            visiblePlayers.append(player)
         }
-        players.append(player)
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            print("At tab 0 \(OptionsViewController.clearAll)")
+            if OptionsViewController.clearAll {
+                for p in players {
+                    p.resetAll()
+                }
+                tableView.reloadData()
+            }
+            
+            if OptionsViewController.numPlayers != visiblePlayers.count {
+                let num = OptionsViewController.numPlayers
+                
+                if num < visiblePlayers.count {
+                    visiblePlayers.removeSubrange(num..<visiblePlayers.count)
+                }
+                else {
+                    for i in visiblePlayers.count..<num {
+                        visiblePlayers.append(players[i])
+                    }
+                }
+                tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
 
+    // Tells the table view how many sections to display.
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    // Tells the table view how many rows to display in a given section.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        return visiblePlayers.count
     }
 
+    // Configures and provides a cell to display for a given row.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "PlayerTableViewCell"
@@ -50,12 +85,9 @@ class PlayerTableViewController: UITableViewController, PlayerTableViewCellDeleg
             fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
         }
 
-        let player = players[indexPath.row]
-        cell.nameTextField.text = player.name
+        let player = visiblePlayers[indexPath.row]
+        player.name = cell.nameTextField.text ?? ""
         cell.statsLabel.text = player.getStatsText()
-        //cell.scoringButtonsControl.values = player.values
-
-
         
         // the 'self' here means the view controller, set view controller as the delegate
         cell.delegate = self
@@ -63,21 +95,7 @@ class PlayerTableViewController: UITableViewController, PlayerTableViewCellDeleg
         return cell
     }
     
-    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, scoringButtonTappedFor value: Int) {
-      // directly use the youtuber saved in the cell
-      // show alert
-//      let alert = UIAlertController(title: "Subscribed!", message: "Subscribed to \(name)", preferredStyle: .alert)
-//      let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//      alert.addAction(okAction)
-//
-//      self.present(alert, animated: true, completion: nil)
-        
-        
-        
-        print("Tapped")
-        players[0].values[value] += 1
-        tableView.reloadData()
-    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -123,5 +141,19 @@ class PlayerTableViewController: UITableViewController, PlayerTableViewCellDeleg
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    // check which button inside cell was tapped
+    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, _ buttonIndex: Int, _ rowIndex: Int, _ task: String) {
 
+        if task == "score" {
+            players[rowIndex].values[buttonIndex] += 1
+            tableView.reloadData()
+        }
+        else if task == "reset" {
+            players[rowIndex].reset()
+            tableView.reloadData()
+        }
+    }
+    
 }
