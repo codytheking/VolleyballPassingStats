@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerTableViewController: UITableViewController {
+class PlayerTableViewController: UITableViewController, PlayerTableViewCellDelegate {
 
     // MARK: Properties
     
@@ -17,6 +17,8 @@ class PlayerTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,7 +45,7 @@ class PlayerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "PlayerTableViewCell"
-        
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PlayerTableViewCell  else {
             fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
         }
@@ -52,8 +54,29 @@ class PlayerTableViewController: UITableViewController {
         cell.nameTextField.text = player.name
         cell.statsLabel.text = player.getStatsText()
         //cell.scoringButtonsControl.values = player.values
+
+
         
+        // the 'self' here means the view controller, set view controller as the delegate
+        cell.delegate = self
+            
         return cell
+    }
+    
+    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, scoringButtonTappedFor value: Int) {
+      // directly use the youtuber saved in the cell
+      // show alert
+//      let alert = UIAlertController(title: "Subscribed!", message: "Subscribed to \(name)", preferredStyle: .alert)
+//      let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//      alert.addAction(okAction)
+//
+//      self.present(alert, animated: true, completion: nil)
+        
+        
+        
+        print("Tapped")
+        players[0].values[value] += 1
+        tableView.reloadData()
     }
 
     /*
