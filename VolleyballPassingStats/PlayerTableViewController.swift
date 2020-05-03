@@ -39,8 +39,9 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
+        
+        // tapped on tab 0 of Tab Bar
         if tabBarIndex == 0 {
-            print("At tab 0 \(OptionsViewController.clearAll)")
             if OptionsViewController.clearAll {
                 for p in players {
                     p.resetAll()
@@ -88,6 +89,14 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
         let player = visiblePlayers[indexPath.row]
         player.name = cell.nameTextField.text ?? ""
         cell.statsLabel.text = player.getStatsText()
+        
+        if player.lastPasses.count > 0 {
+            let lastPass = player.lastPasses[player.lastPasses.count - 1]
+            cell.lastPassLabel.text = "Last pass: \(lastPass)"
+        }
+        else {
+            cell.lastPassLabel.text = ""
+        }
         
         // the 'self' here means the view controller, set view controller as the delegate
         cell.delegate = self
@@ -148,12 +157,65 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
 
         if task == "score" {
             players[rowIndex].values[buttonIndex] += 1
+            players[rowIndex].lastPasses.append(buttonIndex)
+            navigationItem.title = "Group Average: \(getGroupAvg())"
             tableView.reloadData()
         }
         else if task == "reset" {
             players[rowIndex].reset()
+            
+            if getTotalPasses() == 0 {
+                navigationItem.title = "Passing Stats"
+            }
+            else {
+                navigationItem.title = "Group Average: \(getGroupAvg())"
+            }
+            
+            tableView.reloadData()
+        }
+        else if task == "undo", players[rowIndex].lastPasses.count > 0 {
+            let hist = players[rowIndex].lastPasses
+            let lastBtnIndex = hist[hist.count - 1]
+            players[rowIndex].values[lastBtnIndex] -= 1
+            players[rowIndex].lastPasses.remove(at: hist.count - 1)
+            
+            if getTotalPasses() == 0 {
+                navigationItem.title = "Passing Stats"
+            }
+            else {
+                navigationItem.title = "Group Average: \(getGroupAvg())"
+            }
+            
             tableView.reloadData()
         }
     }
     
+    
+    // MARK: Private Methods
+    
+    private func getGroupAvg() -> Double {
+        if visiblePlayers.count == 0 {
+            return 0.0
+        }
+        
+        var sum = 0.0
+        var totalPasses = 0
+        
+        for p in visiblePlayers {
+            sum += p.getPassesAndAvg().avg * Double(p.getPassesAndAvg().passes)
+            totalPasses += p.getPassesAndAvg().passes
+        }
+        
+        return (sum / Double(totalPasses))
+    }
+    
+    private func getTotalPasses() -> Int {
+        var totalPasses = 0
+        
+        for p in visiblePlayers {
+            totalPasses += p.getPassesAndAvg().passes
+        }
+        
+        return totalPasses
+    }
 }

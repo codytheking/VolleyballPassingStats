@@ -86,22 +86,46 @@
                                                 <action selector="resetButtonTapped:" destination="8sc-qg-MHw" eventType="touchUpInside" id="dde-hE-INA"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rd-p5-ecF">
+                                            <rect key="frame" x="286" y="21" width="44" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Uzv-CP-Evf"/>
+                                                <constraint firstAttribute="height" constant="40" id="xI5-FT-YZj"/>
+                                            </constraints>
+                                            <state key="normal" title="Undo"/>
+                                            <connections>
+                                                <action selector="undoButtonTapped:" destination="8sc-qg-MHw" eventType="touchUpInside" id="pce-2O-ZvJ"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jno-rG-Ivd">
+                                            <rect key="frame" x="134.5" y="25" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="OWM-uq-wXp" firstAttribute="leading" secondItem="GgV-Jz-Y0a" secondAttribute="leading" constant="10" id="5tL-u1-DT4"/>
                                         <constraint firstItem="SUQ-nD-LGR" firstAttribute="leading" secondItem="GgV-Jz-Y0a" secondAttribute="leading" constant="30" id="CQE-jE-3tj"/>
                                         <constraint firstItem="B7M-yV-SBI" firstAttribute="top" secondItem="GgV-Jz-Y0a" secondAttribute="top" constant="20" id="QS2-Xr-swK"/>
                                         <constraint firstItem="A9X-20-97L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B7M-yV-SBI" secondAttribute="trailing" constant="8" symbolic="YES" id="VFn-gI-ESA"/>
+                                        <constraint firstItem="Jno-rG-Ivd" firstAttribute="top" secondItem="GgV-Jz-Y0a" secondAttribute="topMargin" constant="14" id="Xy1-Dk-mhc"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OWM-uq-wXp" secondAttribute="trailing" constant="20" symbolic="YES" id="ZEg-8n-MLU"/>
+                                        <constraint firstItem="8rd-p5-ecF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jno-rG-Ivd" secondAttribute="trailing" constant="8" symbolic="YES" id="bAF-tB-iqI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="A9X-20-97L" secondAttribute="trailing" constant="10" id="eLd-1a-DqZ"/>
                                         <constraint firstItem="B7M-yV-SBI" firstAttribute="leading" secondItem="GgV-Jz-Y0a" secondAttribute="leading" constant="10" id="gQi-22-LPw"/>
                                         <constraint firstItem="OWM-uq-wXp" firstAttribute="top" secondItem="B7M-yV-SBI" secondAttribute="bottom" constant="20" id="h1c-Lb-yav"/>
+                                        <constraint firstItem="A9X-20-97L" firstAttribute="leading" secondItem="8rd-p5-ecF" secondAttribute="trailing" constant="10" id="h2E-dK-ZX0"/>
                                         <constraint firstItem="A9X-20-97L" firstAttribute="top" secondItem="GgV-Jz-Y0a" secondAttribute="topMargin" constant="10" id="jPY-SR-A2h"/>
+                                        <constraint firstItem="Jno-rG-Ivd" firstAttribute="leading" secondItem="B7M-yV-SBI" secondAttribute="trailing" constant="15" id="ld9-uJ-zlG"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B7M-yV-SBI" secondAttribute="trailing" constant="20" symbolic="YES" id="scl-Eh-JOi"/>
+                                        <constraint firstItem="8rd-p5-ecF" firstAttribute="top" secondItem="GgV-Jz-Y0a" secondAttribute="topMargin" constant="10" id="uu1-Pr-znW"/>
                                         <constraint firstItem="SUQ-nD-LGR" firstAttribute="top" secondItem="OWM-uq-wXp" secondAttribute="bottom" constant="30" id="vr2-K5-vvV"/>
+                                        <constraint firstItem="8rd-p5-ecF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B7M-yV-SBI" secondAttribute="trailing" constant="8" symbolic="YES" id="zXs-ci-wJ3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="lastPassLabel" destination="Jno-rG-Ivd" id="n2U-N6-YI9"/>
                                     <outlet property="nameTextField" destination="B7M-yV-SBI" id="7d4-pc-QO6"/>
                                     <outlet property="scoringBtn0" destination="Mp5-en-pbf" id="nRD-om-df8"/>
                                     <outlet property="scoringBtn1" destination="Sdb-vW-eBA" id="awO-W9-g7D"/>

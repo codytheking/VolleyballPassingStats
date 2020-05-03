@@ -13,12 +13,14 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
     // MARK: Properties
     
     @IBOutlet weak var nameTextField: UITextField!
-    //@IBOutlet weak var scoringButtonsControl: ScoringButtonsControl!
     @IBOutlet weak var statsLabel: UILabel!
+    @IBOutlet weak var lastPassLabel: UILabel!
     @IBOutlet weak var scoringBtn0: UIButton!
     @IBOutlet weak var scoringBtn1: UIButton!
     @IBOutlet weak var scoringBtn2: UIButton!
     @IBOutlet weak var scoringBtn3: UIButton!
+    
+    var isHigh: Bool = false
         
     // the delegate, remember to set to weak to prevent cycles
     weak var delegate: PlayerTableViewCellDelegate?
@@ -54,6 +56,22 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
      
     
     // MARK: Actions
+    
+    @IBAction func undoButtonTapped(_ sender: UIButton) {
+        let buttonPosition = sender.convert(CGPoint(), to:sender.superview?.superview?.superview)
+        // get TableView from button
+        let view = sender.superview?.superview?.superview as! UITableView as UITableView
+        let indexPath = view.indexPathForRow(at:buttonPosition)
+        // row if the TableView
+        let row = indexPath!.row
+        
+        let index = -1
+        let task = "undo"
+        
+        if let _ = delegate {
+            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task)
+        }
+    }
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         let buttonPosition = sender.convert(CGPoint(), to:sender.superview?.superview?.superview)
