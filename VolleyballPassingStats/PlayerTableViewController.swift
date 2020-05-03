@@ -45,6 +45,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
             if OptionsViewController.clearAll {
                 for p in players {
                     p.resetAll()
+                    navigationItem.title = "Passing Stats"
                 }
                 tableView.reloadData()
             }
@@ -60,6 +61,14 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
                         visiblePlayers.append(players[i])
                     }
                 }
+                
+                if getTotalPasses() == 0 {
+                    navigationItem.title = "Passing Stats"
+                }
+                else {
+                    navigationItem.title = "Group Average: \(getGroupAvg())"
+                }
+                
                 tableView.reloadData()
             }
         }

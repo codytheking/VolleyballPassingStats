@@ -18,7 +18,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var numPlayersStepper: UIStepper!
     
     static var clearAll = false
-    static var numPlayers = 1
+    static var numPlayers = 20
     static let maxNumPlayers = 20
     
     
@@ -27,6 +27,9 @@ class OptionsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         numPlayersStepper.maximumValue = Double(OptionsViewController.maxNumPlayers)
+        numPlayersStepper.minimumValue = 1
+        numPlayersStepper.stepValue = 1
+        numPlayersStepper.value = Double(OptionsViewController.maxNumPlayers)
     }
 
     
@@ -42,15 +45,27 @@ class OptionsViewController: UIViewController {
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             OptionsViewController.clearAll = true
-            //self.tabBarController?.selectedIndex = 0;
         }))
 
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            //OptionsViewController.clearAll = false
         }))
 
         present(refreshAlert, animated: true, completion: nil)
-        
-        
+    }
+    
+    @IBAction func nameHyperlink(_ sender: UIButton) {
+        if let url = NSURL(string: "http://codyjking.com/") {
+            
+            let refreshAlert = UIAlertController(title: "Open Link", message: "Go to developer's website?", preferredStyle: UIAlertController.Style.alert)
+
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            }))
+
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+
+            present(refreshAlert, animated: true, completion: nil)
+        }
     }
 }
