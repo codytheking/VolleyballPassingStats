@@ -7,6 +7,7 @@ VolleyballPassingStats.xcodeproj/
 # Private keys and certs
 *.p12
 *.jks
+*.pem
 
 # Images and Media
 Assets.xcassets
