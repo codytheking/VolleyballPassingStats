@@ -47,6 +47,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
                     p.resetAll()
                     navigationItem.title = "Passing Stats"
                 }
+                OptionsViewController.clearAll = false
                 tableView.reloadData()
             }
             
@@ -96,7 +97,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
         }
 
         let player = visiblePlayers[indexPath.row]
-        player.name = cell.nameTextField.text ?? ""
+        cell.nameTextField.text = player.name
         cell.statsLabel.text = player.getStatsText()
         
         if player.lastPasses.count > 0 {
@@ -162,7 +163,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
     
     
     // check which button inside cell was tapped
-    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, _ buttonIndex: Int, _ rowIndex: Int, _ task: String) {
+    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, _ buttonIndex: Int, _ rowIndex: Int, _ task: String, _ name: String) {
 
         if task == "score" {
             players[rowIndex].values[buttonIndex] += 1
@@ -197,6 +198,11 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
             
             tableView.reloadData()
         }
+        else if task == "set name" {
+            print("Setting name")
+            players[rowIndex].name = name
+            visiblePlayers[rowIndex].name = name
+        }
     }
     
     
@@ -215,7 +221,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
             totalPasses += p.getPassesAndAvg().passes
         }
         
-        return (sum / Double(totalPasses))
+        return (round(sum / Double(totalPasses) * 1000) / 1000)
     }
     
     private func getTotalPasses() -> Int {

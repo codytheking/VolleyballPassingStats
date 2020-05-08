@@ -4,6 +4,9 @@ VolleyballPassingStats.xcodeproj/
 *.app
 *.xctest
 
+# Private keys and certs
+*.p12
+
 # Images and Media
 Assets.xcassets
 *.png

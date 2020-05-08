@@ -34,15 +34,12 @@ class VolleyballPassingStatsTests: XCTestCase {
     
     // Player tests
     
-    // Confirm that the Meal initializer returns a Meal object when passed valid parameters.
+    // Confirm that the Player initializer returns a Player object when passed valid parameters.
     func testPlayerInitializationSucceeds() {
         let createPlayer = Player.init("King")
         XCTAssertNotNil(createPlayer)
+        
+        let emptyName = Player.init()
+        XCTAssertNotNil(emptyName)
     }
-
-    func testMealInitializationFails() {
-        let emptyName = Player.init("")
-        XCTAssertNil(emptyName)
-    }
-
 }

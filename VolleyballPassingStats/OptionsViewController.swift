@@ -16,6 +16,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var numPlayersTextField: UITextField!
     @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var numPlayersStepper: UIStepper!
+    @IBOutlet weak var versionLabel: UILabel!
     
     static var clearAll = false
     static var numPlayers = 20
@@ -30,6 +31,9 @@ class OptionsViewController: UIViewController {
         numPlayersStepper.minimumValue = 1
         numPlayersStepper.stepValue = 1
         numPlayersStepper.value = Double(OptionsViewController.maxNumPlayers)
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        versionLabel.text = "Version: \(appVersion ?? "")"
     }
 
     

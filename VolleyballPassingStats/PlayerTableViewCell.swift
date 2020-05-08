@@ -19,8 +19,7 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var scoringBtn1: UIButton!
     @IBOutlet weak var scoringBtn2: UIButton!
     @IBOutlet weak var scoringBtn3: UIButton!
-    
-    var isHigh: Bool = false
+
         
     // the delegate, remember to set to weak to prevent cycles
     weak var delegate: PlayerTableViewCellDelegate?
@@ -51,6 +50,24 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Hide the keyboard.
         nameTextField.resignFirstResponder()
         
+        // Get info to send to controller
+        let cell = textField.superview?.superview as! UITableViewCell as UITableViewCell
+        let table = cell.superview as! UITableView
+        let indexPath = table.indexPath(for: cell)
+        // row if the TableView
+        let row = indexPath!.row
+        
+        let index = -1
+        let task = "set name"
+        
+        let name = nameTextField.text ?? ""
+        
+        // ask the delegate (in most case, its the view controller) to
+        // call the function 'scoringButtonTappedFor' on itself.
+        if let _ = delegate {
+            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: name)
+        }
+        
         return true
     }
      
@@ -69,7 +86,7 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
         let task = "undo"
         
         if let _ = delegate {
-            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task)
+            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: "")
         }
     }
     
@@ -85,7 +102,7 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
         let task = "reset"
         
         if let _ = delegate {
-            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task)
+            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: "")
         }
     }
     
@@ -112,12 +129,12 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
         // ask the delegate (in most case, its the view controller) to
         // call the function 'scoringButtonTappedFor' on itself.
         if let _ = delegate {
-            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task)
+            self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: "")
         }
     }
 }
 
 // Only class object can conform to this protocol (struct/enum can't)
 protocol PlayerTableViewCellDelegate: AnyObject {
-    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, _ index: Int, _ rowIndex: Int, _ task: String)
+    func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, _ index: Int, _ rowIndex: Int, _ task: String, _ name: String)
 }
