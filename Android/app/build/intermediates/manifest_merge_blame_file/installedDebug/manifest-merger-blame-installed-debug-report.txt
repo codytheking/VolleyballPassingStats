@@ -1,0 +1,92 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.codyjking.volleyballpassingstats"
+4    android:versionCode="11"
+5    android:versionName="2.0.7" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml
+10
+11    <application
+11-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:5:5-36:19
+12        android:allowBackup="true"
+12-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+13-->[com.android.support:support-compat:28.0.0] /Users/king/.gradle/caches/transforms-2/files-2.1/f1491a81a65d4033a56d6549564e765e/support-compat-28.0.0/AndroidManifest.xml:22:18-91
+14        android:debuggable="true"
+15        android:fullBackupContent="true"
+15-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:7:9-41
+16        android:icon="@mipmap/launcher"
+16-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:8:9-40
+17        android:label="@string/app_name"
+17-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:9:9-41
+18        android:roundIcon="@mipmap/launcher"
+18-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:10:9-45
+19        android:supportsRtl="true"
+19-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:11:9-35
+20        android:theme="@style/AppTheme" >
+20-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:12:9-40
+21        <activity android:name="com.codyjking.volleyballpassingstats.MainActivity" >
+21-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:13:9-18:20
+21-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:13:19-47
+22            <intent-filter android:autoVerify="true" >
+22-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:14:13-17:29
+22-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:14:28-53
+23                <action android:name="android.intent.action.MAIN" />
+23-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:15:17-69
+23-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:15:25-66
+24
+25                <category android:name="android.intent.category.LAUNCHER" />
+25-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:16:17-77
+25-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:16:27-74
+26            </intent-filter>
+27        </activity>
+28        <activity
+28-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:19:9-27:20
+29            android:name="com.codyjking.volleyballpassingstats.AboutActivity"
+29-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:20:13-42
+30            android:label="@string/title_activity_about"
+30-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:21:13-57
+31            android:parentActivityName="com.codyjking.volleyballpassingstats.MainActivity"
+31-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:22:13-55
+32            android:theme="@style/AppTheme.NoActionBar" >
+32-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:23:13-56
+33            <meta-data
+33-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:24:13-26:85
+34                android:name="android.support.PARENT_ACTIVITY"
+34-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:25:17-63
+35                android:value="com.codyjking.volleyballpassingstats.MainActivity" />
+35-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:26:17-82
+36        </activity>
+37        <activity
+37-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:28:9-35:20
+38            android:name="com.codyjking.volleyballpassingstats.SettingsActivity"
+38-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:29:13-45
+39            android:label="Settings"
+39-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:30:13-37
+40            android:parentActivityName="com.codyjking.volleyballpassingstats.MainActivity" >
+40-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:31:13-55
+41            <meta-data
+41-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:24:13-26:85
+42                android:name="android.support.PARENT_ACTIVITY"
+42-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:25:17-63
+43                android:value="com.codyjking.volleyballpassingstats.MainActivity" />
+43-->/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/AndroidManifest.xml:26:17-82
+44        </activity>
+45
+46        <provider
+46-->[android.arch.lifecycle:extensions:1.1.1] /Users/king/.gradle/caches/transforms-2/files-2.1/20c81e5c56d3b9f6f94749db2b4ca94c/extensions-1.1.1/AndroidManifest.xml:23:9-27:43
+47            android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"
+47-->[android.arch.lifecycle:extensions:1.1.1] /Users/king/.gradle/caches/transforms-2/files-2.1/20c81e5c56d3b9f6f94749db2b4ca94c/extensions-1.1.1/AndroidManifest.xml:24:13-83
+48            android:authorities="com.codyjking.volleyballpassingstats.lifecycle-trojan"
+48-->[android.arch.lifecycle:extensions:1.1.1] /Users/king/.gradle/caches/transforms-2/files-2.1/20c81e5c56d3b9f6f94749db2b4ca94c/extensions-1.1.1/AndroidManifest.xml:25:13-68
+49            android:exported="false"
+49-->[android.arch.lifecycle:extensions:1.1.1] /Users/king/.gradle/caches/transforms-2/files-2.1/20c81e5c56d3b9f6f94749db2b4ca94c/extensions-1.1.1/AndroidManifest.xml:26:13-37
+50            android:multiprocess="true" />
+50-->[android.arch.lifecycle:extensions:1.1.1] /Users/king/.gradle/caches/transforms-2/files-2.1/20c81e5c56d3b9f6f94749db2b4ca94c/extensions-1.1.1/AndroidManifest.xml:27:13-40
+51    </application>
+52
+53</manifest>

@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/layout_activity_about.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/layout/activity_about.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xxhdpi_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xxhdpi/launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/layout_activity_main.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xhdpi_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xhdpi/launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-hdpi_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-hdpi/launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/layout_activity_settings.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/layout/activity_settings.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xxxhdpi_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xxxhdpi/launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-mdpi_launcher.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-mdpi/launcher.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/menu_menu.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/menu/menu.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/build/intermediates/res/merged/installed/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/king/Documents/Codes/Android/VolleyballPassingStats/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]
