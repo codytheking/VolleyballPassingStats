@@ -15,3 +15,27 @@ Assets.xcassets
 # Mac OS
 .DS_Store
 
+# Android
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+build.gradle
+gradle.properties
+gradle/
+gradlew
+gradlew.bat
+screenshots/
+settings.gradle
+app/build/
+app/proguard-rules.pro
+app/release/
+app/src/androidTest/
+app/src/test/
+app/src/instant/
+app/installed
+
