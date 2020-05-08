@@ -1,1 +1,0 @@
-[{"outputType":{"type":"INSTANT_APP_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":11,"versionName":"2.0.7","enabled":true,"outputFile":"app-installed-debug.apk","fullName":"installedDebug","baseName":"installed-debug","dirName":""},"path":"AndroidManifest.xml","properties":{"packageId":"com.codyjking.volleyballpassingstats","split":"","minSdkVersion":"21"}}]

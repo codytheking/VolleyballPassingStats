@@ -19,25 +19,25 @@ Assets.xcassets
 
 # Android
 *.iml
-.gradle
-/local.properties
-/.idea
+*.gradle
+Android/local.properties
+Android/.idea
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-build.gradle
-gradle.properties
-gradle/
-gradlew
-gradlew.bat
-screenshots/
-settings.gradle
-app/build/
-app/proguard-rules.pro
-app/release/
+Android/build
+Android/captures
+*.externalNativeBuild
+Android/build.gradle
+Android/gradle.properties
+Android/gradle/
+Android/gradlew
+Android/gradlew.bat
+Android/screenshots/
+Android/settings.gradle
+Android/app/build/
+Android/app/proguard-rules.pro
+Android/app/release/
 app/src/androidTest/
 app/src/test/
-app/src/instant/
-app/installed
+Android/app/src/instant/
+Android/app/installed
 
