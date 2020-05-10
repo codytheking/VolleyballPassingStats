@@ -1,17 +1,20 @@
 package com.codyjking.volleyballpassingstats;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private int selectedIndex;
+    private int numPlayersVisible;
     private EditText et_numPlayers;
     private SharedPreferences sharedPref;
     private TextWatcher textWatcher;
@@ -19,8 +22,10 @@ public class SettingsActivity extends AppCompatActivity {
     private final String PREF_NAME = "prefs";
     private final int NUM_PLAYERS = 12;
 
+    static boolean clearAll = false;
+
     public SettingsActivity() {
-        selectedIndex = NUM_PLAYERS - 1;
+        numPlayersVisible = NUM_PLAYERS;
     }
 
     @Override
@@ -33,10 +38,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         // load preferences
         sharedPref = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        selectedIndex = sharedPref.getInt("selectedIndex", NUM_PLAYERS - 1);
+        numPlayersVisible = sharedPref.getInt("numPlayersVisible", NUM_PLAYERS);
 
         // set previously selected number of players
-        et_numPlayers.setText("" + (selectedIndex + 1));
+        et_numPlayers.setText("" + (numPlayersVisible));
     }
 
     private TextWatcher filterTextWatcher = new TextWatcher() {
@@ -61,7 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
                 return;
             }
 
-            getSharedPreferences(PREF_NAME, MODE_PRIVATE).edit().putInt("selectedIndex", val - 1).apply();
+            getSharedPreferences(PREF_NAME, MODE_PRIVATE).edit().putInt("numPlayersVisible", val).apply();
         }
 
         @Override
@@ -74,4 +79,18 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
     };
+
+    public void clearAll(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle("Clear All")
+                .setMessage("Do you really want to clear all stats?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        clearAll = true;
+                    }})
+
+                .setNegativeButton(android.R.string.no, null).show();
+    }
 }

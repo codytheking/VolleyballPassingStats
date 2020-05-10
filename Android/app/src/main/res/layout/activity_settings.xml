@@ -24,9 +24,31 @@
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="(1-12)"
+        android:hint="@string/num_players_hint"
         android:inputType="numberSigned"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_tv" />
+
+    <TextView
+        android:id="@+id/clear_all_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/settings_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_numPlayers" />
+
+    <Button
+        android:id="@+id/clear_all_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:onClick="clearAll"
+        android:tag="clear_all"
+        android:text="@string/clear_all_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clear_all_tv" />
 
 </android.support.constraint.ConstraintLayout>
