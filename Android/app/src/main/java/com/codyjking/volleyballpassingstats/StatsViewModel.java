@@ -1,6 +1,6 @@
 package com.codyjking.volleyballpassingstats;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
