@@ -9,7 +9,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -19,6 +22,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     private StatsViewModel stats;
@@ -152,6 +157,10 @@ public class MainActivity extends AppCompatActivity {
         addToTotal(3, view.getTag().toString());
     }
 
+    public void clearText(View view) {
+        ((TextView) view).setText("");
+    }
+
     // pre: none
     // post: all values are set to 0.
     public void reset(View view) {
@@ -206,9 +215,20 @@ public class MainActivity extends AppCompatActivity {
         int id = getResources().getIdentifier("stats" + (index + 1), "id", getPackageName());
         TextView displayText = findViewById(id);
 
+        // Set stats text (bold except for last pass).
         String display = stats.generateText(index);
-        displayText.setText(display);
+        int lastIndex = display.indexOf("Last");
+        final SpannableStringBuilder sb = new SpannableStringBuilder(display);
+        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
+        if(lastIndex != -1) {
+            sb.setSpan(bss, 0, lastIndex, Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make characters Bold (except last pass)
+        }
+        else {
+            sb.setSpan(bss, 0, display.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make characters Bold (except last pass)
+        }
+        displayText.setText(sb);
 
+        // Set group average at top
         id = getResources().getIdentifier("group_avg", "id", getPackageName());
         TextView groupAvgText = findViewById(id);
         String groupAvg = "Group Average: " + stats.getGroupAvg(numPlayersVisible);

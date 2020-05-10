@@ -113,6 +113,7 @@
                 android:hint="@string/player1_name_hint"
                 android:importantForAutofill="no"
                 android:inputType="text"
+                android:onClick="clearText"
                 android:text="@string/p1"
                 android:textAlignment="center"
                 android:textSize="22sp"

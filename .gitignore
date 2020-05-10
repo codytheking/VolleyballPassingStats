@@ -8,6 +8,8 @@ VolleyballPassingStats.xcodeproj/
 *.p12
 *.jks
 *.pem
+*.keystore
+*.pepk
 
 # Images and Media
 Assets.xcassets

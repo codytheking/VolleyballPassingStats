@@ -43,6 +43,10 @@ public class StatsViewModel extends ViewModel {
         for(int i = 0; i < values[index].length; i++) {
             values[index][i] = 0;
         }
+
+        if(lastPasses.size() > 0) {
+            lastPasses.set(index, new ArrayList<Integer>());
+        }
     }
 
     public void clearAll() {
@@ -122,12 +126,21 @@ public class StatsViewModel extends ViewModel {
     }
 
     public String generateText(int index) {
+        String last = "";
         if(Locale.getDefault().getLanguage().equalsIgnoreCase("es")) {
+            if(lastPasses.get(index).size() > 0) {
+                last = "Pase anterior: " + lastPasses.get(index).get(lastPasses.get(index).size() - 1);
+            }
             return ("Promedio: " + average[index] + " (" + numVals[index] + " pasos)\nCero: " + values[index][0] +
-                    " Uno: " + values[index][1] + " Dos: " + values[index][2] + " Tres: " + values[index][3]);
+                    " Uno: " + values[index][1] + " Dos: " + values[index][2] + " Tres: " + values[index][3] +
+                    "\n" + last);
         }
 
+        if(lastPasses.get(index).size() > 0) {
+            last = "Last pass: " + lastPasses.get(index).get(lastPasses.get(index).size() - 1);
+        }
         return ("Average: " + average[index] + " (" + numVals[index] + " passes)\nZeros: " + values[index][0] +
-                " Ones: " + values[index][1] + " Twos: " + values[index][2] + " Threes: " + values[index][3]);
+                " Ones: " + values[index][1] + " Twos: " + values[index][2] + " Threes: " + values[index][3] +
+                "\n" + last);
     }
 }
