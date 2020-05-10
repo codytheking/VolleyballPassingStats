@@ -1,13 +1,13 @@
 package com.codyjking.volleyballpassingstats;
 
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -17,12 +17,14 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     private StatsViewModel stats;
     private SharedPreferences sharedPref;
     private Gson gson;
+    private int numPlayersVisible;
 
     private final String PREF_NAME = "prefs";
 
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             stats = ViewModelProviders.of(this).get(StatsViewModel.class);
         }
 
-        int selectedIndex = sharedPref.getInt("selectedIndex", stats.getNumPlayers() - 1);
+        numPlayersVisible = sharedPref.getInt("numPlayersVisible", stats.getNumPlayers());
 
         for (int i = 1; i <= stats.getNumPlayers(); i++) {
             updateText("p" + i);
@@ -58,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // show/hide players
-        if (selectedIndex > -1) {
-            for (int j = 1; j <= stats.getNumPlayers(); j++) {
-                int id = getResources().getIdentifier("p" + j + "_layout", "id", getPackageName());
+        if (numPlayersVisible > 0) {
+            for (int j = 0; j < stats.getNumPlayers(); j++) {
+                int id = getResources().getIdentifier("p" + (j+1) + "_layout", "id", getPackageName());
 
-                if (j <= selectedIndex + 1) {
+                if (j+1 <= numPlayersVisible) {
                     findViewById(id).setVisibility(View.VISIBLE);
                 } else {
                     findViewById(id).setVisibility(View.GONE);
@@ -73,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
         Uri appLinkData = appLinkIntent.getData();
+    }
+
+    // Returning to this Activity
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(SettingsActivity.clearAll) {
+            clearAll();
+            SettingsActivity.clearAll = false;
+        }
     }
 
     // Touch outside of edittext removes focus and closes keyboard
@@ -151,6 +164,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // pre: none
+    // post: last pass for the player is removed.
+    public void undo(View view) {
+        String p = view.getTag().toString();
+        int index = Integer.parseInt(p.substring(1)) - 1;
+
+        stats.undo(index);
+
+        updateText(p);
+    }
+
+    public void clearAll() {
+        stats.clearAll();
+
+        for(int i = 0; i < stats.getNumPlayers(); i++) {
+            String name = "Player " + (i+1);
+            int tvId = getResources().getIdentifier("p" + (i+1) + "_name", "id", getPackageName());
+            TextView nameText = findViewById(tvId);
+            nameText.setText(name);
+        }
+
+        for(int i = 0; i < stats.getNumPlayers(); i++) {
+            updateText("p" + (i+1));
+        }
+    }
+
+    // pre: none
     // post: Adds button value to total.
     public void addToTotal(int val, String p) {
         int index = Integer.parseInt(p.substring(1)) - 1;
@@ -169,6 +208,11 @@ public class MainActivity extends AppCompatActivity {
 
         String display = stats.generateText(index);
         displayText.setText(display);
+
+        id = getResources().getIdentifier("group_avg", "id", getPackageName());
+        TextView groupAvgText = findViewById(id);
+        String groupAvg = "Group Average: " + stats.getGroupAvg(numPlayersVisible);
+        groupAvgText.setText(groupAvg);
 
         // Save data
         String json = gson.toJson(stats);

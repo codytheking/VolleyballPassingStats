@@ -38,6 +38,5 @@ Android/app/proguard-rules.pro
 Android/app/release/
 app/src/androidTest/
 app/src/test/
-Android/app/src/instant/
 Android/app/installed
 

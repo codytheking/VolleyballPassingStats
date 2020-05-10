@@ -11,7 +11,7 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,30 +20,93 @@
         <!-- Should try to create these dynamically -->
 
         <!-- Player 1 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p1_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/instructs"
+            <Button
+                android:id="@+id/button00"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:onClick="addZero"
+                android:tag="p1"
+                android:text="@string/button_zero"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/button10"
+                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:onClick="addOne"
+                android:tag="p1"
+                android:text="@string/button_one"
+                app:layout_constraintLeft_toRightOf="@+id/button00"
+                app:layout_constraintRight_toLeftOf="@+id/button20"
+                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:onClick="addTwo"
+                android:tag="p1"
+                android:text="@string/button_two"
+                app:layout_constraintLeft_toRightOf="@+id/button10"
+                app:layout_constraintRight_toLeftOf="@+id/button30"
+                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+
+            <Button
+                android:id="@+id/button30"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:onClick="addThree"
+                android:tag="p1"
+                android:text="@string/button_three"
+                app:layout_constraintLeft_toRightOf="@+id/button20"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+
+            <Button
+                android:id="@+id/buttonReset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-condensed"
-                android:text="@string/instruct"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:onClick="reset"
+                android:tag="p1"
+                android:text="@string/button_reset"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stats1" />
+
+            <Button
+                android:id="@+id/buttonUndo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p1"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset"
+                app:layout_constraintTop_toBottomOf="@+id/stats1" />
 
             <EditText
                 android:id="@+id/p1_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="41dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
@@ -54,59 +117,7 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructs" />
-
-            <Button
-                android:id="@+id/button00"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:tag="p1"
-                android:onClick="addZero"
-                android:text="@string/button_zero"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/button10"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
-
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:tag="p1"
-                android:onClick="addOne"
-                android:text="@string/button_one"
-                app:layout_constraintLeft_toRightOf="@+id/button00"
-                app:layout_constraintRight_toLeftOf="@+id/button20"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
-
-            <Button
-                android:id="@+id/button20"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:tag="p1"
-                android:onClick="addTwo"
-                android:text="@string/button_two"
-                app:layout_constraintLeft_toRightOf="@+id/button10"
-                app:layout_constraintRight_toLeftOf="@+id/button30"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
-
-            <Button
-                android:id="@+id/button30"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:tag="p1"
-                android:onClick="addThree"
-                android:text="@string/button_three"
-                app:layout_constraintLeft_toRightOf="@+id/button20"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/stats1"
@@ -123,21 +134,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button00" />
 
-            <Button
-                android:id="@+id/buttonReset"
+            <TextView
+                android:id="@+id/group_avg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:tag="p1"
-                android:onClick="reset"
-                android:text="@string/button_reset"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stats1" />
-        </android.support.constraint.ConstraintLayout>
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/group_avg"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 2 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p2_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -243,10 +255,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats2" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p2"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset2"
+                app:layout_constraintTop_toBottomOf="@+id/stats2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 3 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p3_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -352,10 +376,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats3" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p3"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset3"
+                app:layout_constraintTop_toBottomOf="@+id/stats3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 4 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p4_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -461,10 +497,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats4" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p4"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset4"
+                app:layout_constraintTop_toBottomOf="@+id/stats4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 5 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p5_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -570,10 +618,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats5" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p5"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset5"
+                app:layout_constraintTop_toBottomOf="@+id/stats5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 6 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p6_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -679,10 +739,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats6" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p6"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset6"
+                app:layout_constraintTop_toBottomOf="@+id/stats6" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 7 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p7_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -788,10 +860,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats7" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p7"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset7"
+                app:layout_constraintTop_toBottomOf="@+id/stats7" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 8 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p8_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -897,10 +981,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats8" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p8"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset8"
+                app:layout_constraintTop_toBottomOf="@+id/stats8" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 9 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p9_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1006,10 +1102,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats9" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p9"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset9"
+                app:layout_constraintTop_toBottomOf="@+id/stats9" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 10 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p10_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1115,10 +1223,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats10" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p10"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset10"
+                app:layout_constraintTop_toBottomOf="@+id/stats10" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 11 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p11_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1224,10 +1344,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats11" />
-        </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonUndo11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p11"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset11"
+                app:layout_constraintTop_toBottomOf="@+id/stats11" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Player 12 -->
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/p12_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1333,7 +1465,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stats12" />
-        </android.support.constraint.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
+            <Button
+                android:id="@+id/buttonUndo12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="undo"
+                android:tag="p12"
+                android:text="@string/button_undo"
+                app:layout_constraintLeft_toRightOf="@+id/buttonReset12"
+                app:layout_constraintTop_toBottomOf="@+id/stats12" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
