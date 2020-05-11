@@ -1,5 +1,7 @@
 package com.codyjking.volleyballpassingstats;
 
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +23,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     private StatsViewModel stats;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             // create class extending ViewModel to retain data on configuration change (e.g. screen rot)
-            stats = ViewModelProviders.of(this).get(StatsViewModel.class);
+            stats = new ViewModelProvider(this).get(StatsViewModel.class);
         }
 
         numPlayersVisible = sharedPref.getInt("numPlayersVisible", stats.getNumPlayers());
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Set text for EditText objects
         for(int i = 0; i < stats.getNumPlayers(); i++) {
             int id = getResources().getIdentifier("p" + (i+1) + "_name", "id", getPackageName());
-            EditText text = findViewById(id);
+            AppCompatEditText text = findViewById(id);
             text.setText(stats.getName(i + 1));
             text.addTextChangedListener(filterTextWatcher);
         }

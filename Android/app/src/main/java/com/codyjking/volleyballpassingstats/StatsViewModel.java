@@ -143,4 +143,14 @@ public class StatsViewModel extends ViewModel {
                 " Ones: " + values[index][1] + " Twos: " + values[index][2] + " Threes: " + values[index][3] +
                 "\n" + last);
     }
+
+    public String generateExportText(int index) {
+        if(Locale.getDefault().getLanguage().equalsIgnoreCase("es")) {
+            return ("Promedio: " + average[index] + " (" + numVals[index] + " pasos)\nCero: " + values[index][0] +
+                    " Uno: " + values[index][1] + " Dos: " + values[index][2] + " Tres: " + values[index][3]);
+        }
+
+        return ("Average: " + average[index] + " (" + numVals[index] + " passes)\nZeros: " + values[index][0] +
+                " Ones: " + values[index][1] + " Twos: " + values[index][2] + " Threes: " + values[index][3]);
+    }
 }

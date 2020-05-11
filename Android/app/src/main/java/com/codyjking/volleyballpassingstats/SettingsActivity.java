@@ -3,17 +3,33 @@ package com.codyjking.volleyballpassingstats;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SettingsActivity extends AppCompatActivity {
+import com.google.gson.Gson;
 
+import java.io.File;
+import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
+public class SettingsActivity extends AppCompatActivity {
+    private StatsViewModel stats;
+    private Gson gson;
     private int numPlayersVisible;
     private EditText et_numPlayers;
     private SharedPreferences sharedPref;
@@ -42,6 +58,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         // set previously selected number of players
         et_numPlayers.setText("" + (numPlayersVisible));
+
+        gson = new Gson();
+        String json = sharedPref.getString("statsObj", "");
+        stats = gson.fromJson(json, StatsViewModel.class);
     }
 
     private TextWatcher filterTextWatcher = new TextWatcher() {
@@ -52,6 +72,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             try {
                 val = Integer.parseInt(et_numPlayers.getText().toString());
+                numPlayersVisible = val;
 
                 if(val < 1 || val > 12) {
                     et_numPlayers.getText().clear();
@@ -92,5 +113,27 @@ public class SettingsActivity extends AppCompatActivity {
                     }})
 
                 .setNegativeButton(android.R.string.no, null).show();
+    }
+
+    public void exportData(View view) {
+        String timeStamp = new SimpleDateFormat("E MM-dd-yyyy HH:mm", Locale.forLanguageTag("en_us")).format(Calendar.getInstance().getTime());
+        String shortTimeStamp = new SimpleDateFormat("MM-dd-yyyy_HH-mm", Locale.forLanguageTag("en_us")).format(Calendar.getInstance().getTime());
+
+        String statsText = "Group Average: " + stats.getGroupAvg(numPlayersVisible) + "\n\n";
+
+        for (int i = 0; i < numPlayersVisible; i++) {
+            statsText += stats.getName(i + 1) + "\n" + stats.generateExportText(i) + "\n\n";
+        }
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{""});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Passing Stats Data Export (" + shortTimeStamp + ")");
+        i.putExtra(Intent.EXTRA_TEXT   , "Here are your stats for " + timeStamp + "\n\n" + statsText);
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(SettingsActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

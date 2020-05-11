@@ -37,7 +37,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button10"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p1_name_layout" />
 
             <Button
                 android:id="@+id/button10"
@@ -50,7 +50,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button00"
                 app:layout_constraintRight_toLeftOf="@+id/button20"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p1_name_layout" />
 
             <Button
                 android:id="@+id/button20"
@@ -63,7 +63,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button10"
                 app:layout_constraintRight_toLeftOf="@+id/button30"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p1_name_layout" />
 
             <Button
                 android:id="@+id/button30"
@@ -76,7 +76,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button20"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p1_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p1_name_layout" />
 
             <Button
                 android:id="@+id/buttonReset"
@@ -102,9 +102,9 @@
                 app:layout_constraintLeft_toRightOf="@+id/buttonReset"
                 app:layout_constraintTop_toBottomOf="@+id/stats1" />
 
-            <EditText
-                android:id="@+id/p1_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p1_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="41dp"
                 android:focusable="true"
@@ -112,13 +112,21 @@
                 android:fontFamily="sans-serif-condensed"
                 android:hint="@string/player1_name_hint"
                 android:importantForAutofill="no"
-                android:inputType="text"
-                android:onClick="clearText"
+                android:inputType="text|textCapWords"
                 android:text="@string/p1"
                 android:textAlignment="center"
                 android:textSize="22sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p1_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/stats1"
@@ -157,22 +165,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p1_layout">
 
-            <EditText
-                android:id="@+id/p2_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p2_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player2_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p2"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player2_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p2_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button01"
@@ -185,7 +202,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button11"
-                app:layout_constraintTop_toBottomOf="@+id/p2_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p2_name_layout" />
 
             <Button
                 android:id="@+id/button11"
@@ -198,7 +215,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button01"
                 app:layout_constraintRight_toLeftOf="@+id/button21"
-                app:layout_constraintTop_toBottomOf="@+id/p2_name"
+                app:layout_constraintTop_toBottomOf="@+id/p2_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -212,7 +229,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button11"
                 app:layout_constraintRight_toLeftOf="@+id/button31"
-                app:layout_constraintTop_toBottomOf="@+id/p2_name"
+                app:layout_constraintTop_toBottomOf="@+id/p2_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -226,7 +243,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button21"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p2_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p2_name_layout" />
 
             <TextView
                 android:id="@+id/stats2"
@@ -278,22 +295,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p2_layout">
 
-            <EditText
-                android:id="@+id/p3_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p3_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player3_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p3"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player3_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p3_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button02"
@@ -306,7 +332,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button12"
-                app:layout_constraintTop_toBottomOf="@+id/p3_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p3_name_layout" />
 
             <Button
                 android:id="@+id/button12"
@@ -319,7 +345,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button02"
                 app:layout_constraintRight_toLeftOf="@+id/button22"
-                app:layout_constraintTop_toBottomOf="@+id/p3_name"
+                app:layout_constraintTop_toBottomOf="@+id/p3_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -333,7 +359,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button12"
                 app:layout_constraintRight_toLeftOf="@+id/button32"
-                app:layout_constraintTop_toBottomOf="@+id/p3_name"
+                app:layout_constraintTop_toBottomOf="@+id/p3_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -347,7 +373,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button22"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p3_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p3_name_layout" />
 
             <TextView
                 android:id="@+id/stats3"
@@ -399,22 +425,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p3_layout">
 
-            <EditText
-                android:id="@+id/p4_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p4_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player4_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p4"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player4_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p4_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button03"
@@ -427,7 +462,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button13"
-                app:layout_constraintTop_toBottomOf="@+id/p4_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p4_name_layout" />
 
             <Button
                 android:id="@+id/button13"
@@ -440,7 +475,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button03"
                 app:layout_constraintRight_toLeftOf="@+id/button23"
-                app:layout_constraintTop_toBottomOf="@+id/p4_name"
+                app:layout_constraintTop_toBottomOf="@+id/p4_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -454,7 +489,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button13"
                 app:layout_constraintRight_toLeftOf="@+id/button33"
-                app:layout_constraintTop_toBottomOf="@+id/p4_name"
+                app:layout_constraintTop_toBottomOf="@+id/p4_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -468,7 +503,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button23"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p4_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p4_name_layout" />
 
             <TextView
                 android:id="@+id/stats4"
@@ -520,22 +555,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p4_layout">
 
-            <EditText
-                android:id="@+id/p5_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p5_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player5_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p5"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player5_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p5_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button04"
@@ -548,7 +592,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button14"
-                app:layout_constraintTop_toBottomOf="@+id/p5_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p5_name_layout" />
 
             <Button
                 android:id="@+id/button14"
@@ -561,7 +605,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button04"
                 app:layout_constraintRight_toLeftOf="@+id/button24"
-                app:layout_constraintTop_toBottomOf="@+id/p5_name"
+                app:layout_constraintTop_toBottomOf="@+id/p5_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -575,7 +619,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button14"
                 app:layout_constraintRight_toLeftOf="@+id/button34"
-                app:layout_constraintTop_toBottomOf="@+id/p5_name"
+                app:layout_constraintTop_toBottomOf="@+id/p5_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -589,7 +633,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button24"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p5_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p5_name_layout" />
 
             <TextView
                 android:id="@+id/stats5"
@@ -641,22 +685,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p5_layout">
 
-            <EditText
-                android:id="@+id/p6_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p6_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player6_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p6"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player6_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p6_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button05"
@@ -669,7 +722,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button15"
-                app:layout_constraintTop_toBottomOf="@+id/p6_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p6_name_layout" />
 
             <Button
                 android:id="@+id/button15"
@@ -682,7 +735,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button05"
                 app:layout_constraintRight_toLeftOf="@+id/button25"
-                app:layout_constraintTop_toBottomOf="@+id/p6_name"
+                app:layout_constraintTop_toBottomOf="@+id/p6_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -696,7 +749,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button15"
                 app:layout_constraintRight_toLeftOf="@+id/button35"
-                app:layout_constraintTop_toBottomOf="@+id/p6_name"
+                app:layout_constraintTop_toBottomOf="@+id/p6_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -710,7 +763,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button25"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p6_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p6_name_layout" />
 
             <TextView
                 android:id="@+id/stats6"
@@ -762,22 +815,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p6_layout">
 
-            <EditText
-                android:id="@+id/p7_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p7_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player7_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p7"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player7_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p7_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button06"
@@ -790,7 +852,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button16"
-                app:layout_constraintTop_toBottomOf="@+id/p7_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p7_name_layout" />
 
             <Button
                 android:id="@+id/button16"
@@ -803,7 +865,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button06"
                 app:layout_constraintRight_toLeftOf="@+id/button26"
-                app:layout_constraintTop_toBottomOf="@+id/p7_name"
+                app:layout_constraintTop_toBottomOf="@+id/p7_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -817,7 +879,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button16"
                 app:layout_constraintRight_toLeftOf="@+id/button36"
-                app:layout_constraintTop_toBottomOf="@+id/p7_name"
+                app:layout_constraintTop_toBottomOf="@+id/p7_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -831,7 +893,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button26"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p7_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p7_name_layout" />
 
             <TextView
                 android:id="@+id/stats7"
@@ -883,22 +945,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p7_layout">
 
-            <EditText
-                android:id="@+id/p8_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p8_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player8_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p8"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player8_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p8_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button07"
@@ -911,7 +982,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button17"
-                app:layout_constraintTop_toBottomOf="@+id/p8_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p8_name_layout" />
 
             <Button
                 android:id="@+id/button17"
@@ -924,7 +995,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button07"
                 app:layout_constraintRight_toLeftOf="@+id/button27"
-                app:layout_constraintTop_toBottomOf="@+id/p8_name"
+                app:layout_constraintTop_toBottomOf="@+id/p8_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -938,7 +1009,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button17"
                 app:layout_constraintRight_toLeftOf="@+id/button37"
-                app:layout_constraintTop_toBottomOf="@+id/p8_name"
+                app:layout_constraintTop_toBottomOf="@+id/p8_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -952,7 +1023,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button27"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p8_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p8_name_layout" />
 
             <TextView
                 android:id="@+id/stats8"
@@ -1004,22 +1075,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p8_layout">
 
-            <EditText
-                android:id="@+id/p9_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p9_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player9_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p9"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player9_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p9_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button08"
@@ -1032,7 +1112,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button18"
-                app:layout_constraintTop_toBottomOf="@+id/p9_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p9_name_layout" />
 
             <Button
                 android:id="@+id/button18"
@@ -1045,7 +1125,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button08"
                 app:layout_constraintRight_toLeftOf="@+id/button28"
-                app:layout_constraintTop_toBottomOf="@+id/p9_name"
+                app:layout_constraintTop_toBottomOf="@+id/p9_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -1059,7 +1139,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button18"
                 app:layout_constraintRight_toLeftOf="@+id/button38"
-                app:layout_constraintTop_toBottomOf="@+id/p9_name"
+                app:layout_constraintTop_toBottomOf="@+id/p9_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -1073,7 +1153,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button28"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p9_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p9_name_layout" />
 
             <TextView
                 android:id="@+id/stats9"
@@ -1125,22 +1205,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p9_layout">
 
-            <EditText
-                android:id="@+id/p10_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p10_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player10_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p10"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player10_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p10_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button09"
@@ -1153,7 +1242,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button19"
-                app:layout_constraintTop_toBottomOf="@+id/p10_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p10_name_layout" />
 
             <Button
                 android:id="@+id/button19"
@@ -1166,7 +1255,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button09"
                 app:layout_constraintRight_toLeftOf="@+id/button29"
-                app:layout_constraintTop_toBottomOf="@+id/p10_name"
+                app:layout_constraintTop_toBottomOf="@+id/p10_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -1180,7 +1269,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button19"
                 app:layout_constraintRight_toLeftOf="@+id/button39"
-                app:layout_constraintTop_toBottomOf="@+id/p10_name"
+                app:layout_constraintTop_toBottomOf="@+id/p10_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -1194,7 +1283,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button29"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p10_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p10_name_layout" />
 
             <TextView
                 android:id="@+id/stats10"
@@ -1246,22 +1335,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p10_layout">
 
-            <EditText
-                android:id="@+id/p11_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p11_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player11_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p11"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player11_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p11_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button010"
@@ -1274,7 +1372,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button110"
-                app:layout_constraintTop_toBottomOf="@+id/p11_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p11_name_layout" />
 
             <Button
                 android:id="@+id/button110"
@@ -1287,7 +1385,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button010"
                 app:layout_constraintRight_toLeftOf="@+id/button210"
-                app:layout_constraintTop_toBottomOf="@+id/p11_name"
+                app:layout_constraintTop_toBottomOf="@+id/p11_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -1301,7 +1399,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button110"
                 app:layout_constraintRight_toLeftOf="@+id/button310"
-                app:layout_constraintTop_toBottomOf="@+id/p11_name"
+                app:layout_constraintTop_toBottomOf="@+id/p11_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -1315,7 +1413,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button210"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p11_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p11_name_layout" />
 
             <TextView
                 android:id="@+id/stats11"
@@ -1367,22 +1465,31 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/p11_layout">
 
-            <EditText
-                android:id="@+id/p12_name"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p12_name_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="41dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-condensed"
+                android:hint="@string/player12_name_hint"
+                android:importantForAutofill="no"
+                android:inputType="text|textCapWords"
                 android:text="@string/p12"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:focusable="true"
-                android:focusableInTouchMode ="true"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:hint="@string/player12_name_hint"/>
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p12_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button011"
@@ -1395,7 +1502,7 @@
                 android:text="@string/button_zero"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/button111"
-                app:layout_constraintTop_toBottomOf="@+id/p12_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p12_name_layout" />
 
             <Button
                 android:id="@+id/button111"
@@ -1408,7 +1515,7 @@
                 android:text="@string/button_one"
                 app:layout_constraintLeft_toRightOf="@+id/button011"
                 app:layout_constraintRight_toLeftOf="@+id/button211"
-                app:layout_constraintTop_toBottomOf="@+id/p12_name"
+                app:layout_constraintTop_toBottomOf="@+id/p12_name_layout"
                 tools:layout_editor_absoluteX="96dp" />
 
             <Button
@@ -1422,7 +1529,7 @@
                 android:text="@string/button_two"
                 app:layout_constraintLeft_toRightOf="@+id/button111"
                 app:layout_constraintRight_toLeftOf="@+id/button311"
-                app:layout_constraintTop_toBottomOf="@+id/p12_name"
+                app:layout_constraintTop_toBottomOf="@+id/p12_name_layout"
                 tools:layout_editor_absoluteX="200dp" />
 
             <Button
@@ -1436,7 +1543,7 @@
                 android:text="@string/button_three"
                 app:layout_constraintLeft_toRightOf="@+id/button211"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p12_name" />
+                app:layout_constraintTop_toBottomOf="@+id/p12_name_layout" />
 
             <TextView
                 android:id="@+id/stats12"
