@@ -122,7 +122,13 @@ public class SettingsActivity extends AppCompatActivity {
         String statsText = "Group Average: " + stats.getGroupAvg(numPlayersVisible) + "\n\n";
 
         for (int i = 0; i < numPlayersVisible; i++) {
-            statsText += stats.getName(i + 1) + "\n" + stats.generateExportText(i) + "\n\n";
+            String name = stats.getName(i + 1);
+
+            if(name.length() == 0) {
+                name = "No Name (P" + (i+1) + ")";
+            }
+
+            statsText += name + "\n" + stats.generateExportText(i) + "\n\n";
         }
 
         Intent i = new Intent(Intent.ACTION_SEND);

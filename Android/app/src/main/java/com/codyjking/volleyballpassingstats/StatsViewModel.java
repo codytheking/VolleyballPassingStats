@@ -127,6 +127,13 @@ public class StatsViewModel extends ViewModel {
 
     public String generateText(int index) {
         String last = "";
+
+        if(lastPasses.size() == 0) {
+            for (int i = 0; i < NUM_PLAYERS; i++) {
+                lastPasses.add(new ArrayList<Integer>());
+            }
+        }
+
         if(Locale.getDefault().getLanguage().equalsIgnoreCase("es")) {
             if(lastPasses.get(index).size() > 0) {
                 last = "Pase anterior: " + lastPasses.get(index).get(lastPasses.get(index).size() - 1);
