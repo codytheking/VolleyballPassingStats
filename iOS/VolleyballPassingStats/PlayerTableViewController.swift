@@ -13,8 +13,8 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
 
     // MARK: Properties
     
-    var players = [Player]()
-    var visiblePlayers = [Player]()
+    static var players = [Player]()
+    static var visiblePlayers = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,8 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
             guard let player = Player() else {
                 fatalError("Unable to instantiate Player object.")
             }
-            players.append(player)
-            visiblePlayers.append(player)
+            PlayerTableViewController.players.append(player)
+            PlayerTableViewController.visiblePlayers.append(player)
         }
     }
     
@@ -43,7 +43,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
         // tapped on tab 0 of Tab Bar
         if tabBarIndex == 0 {
             if OptionsViewController.clearAll {
-                for p in players {
+                for p in PlayerTableViewController.players {
                     p.resetAll()
                     navigationItem.title = "Passing Stats"
                 }
@@ -51,15 +51,15 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
                 tableView.reloadData()
             }
             
-            if OptionsViewController.numPlayers != visiblePlayers.count {
+            if OptionsViewController.numPlayers != PlayerTableViewController.visiblePlayers.count {
                 let num = OptionsViewController.numPlayers
                 
-                if num < visiblePlayers.count {
-                    visiblePlayers.removeSubrange(num..<visiblePlayers.count)
+                if num < PlayerTableViewController.visiblePlayers.count {
+                    PlayerTableViewController.visiblePlayers.removeSubrange(num..<PlayerTableViewController.visiblePlayers.count)
                 }
                 else {
-                    for i in visiblePlayers.count..<num {
-                        visiblePlayers.append(players[i])
+                    for i in PlayerTableViewController.visiblePlayers.count..<num {
+                        PlayerTableViewController.visiblePlayers.append(PlayerTableViewController.players[i])
                     }
                 }
                 
@@ -67,7 +67,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
                     navigationItem.title = "Passing Stats"
                 }
                 else {
-                    navigationItem.title = "Group Average: \(getGroupAvg())"
+                    navigationItem.title = "Group Average: \(PlayerTableViewController.getGroupAvg())"
                 }
                 
                 tableView.reloadData()
@@ -84,7 +84,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
 
     // Tells the table view how many rows to display in a given section.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return visiblePlayers.count
+        return PlayerTableViewController.visiblePlayers.count
     }
 
     // Configures and provides a cell to display for a given row.
@@ -96,7 +96,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
             fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
         }
 
-        let player = visiblePlayers[indexPath.row]
+        let player = PlayerTableViewController.visiblePlayers[indexPath.row]
         cell.nameTextField.text = player.name
         cell.statsLabel.text = player.getStatsText()
         
@@ -166,57 +166,56 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
     func playerTableViewCell(_ playerTableViewCell: PlayerTableViewCell, _ buttonIndex: Int, _ rowIndex: Int, _ task: String, _ name: String) {
 
         if task == "score" {
-            players[rowIndex].values[buttonIndex] += 1
-            players[rowIndex].lastPasses.append(buttonIndex)
-            navigationItem.title = "Group Average: \(getGroupAvg())"
+            PlayerTableViewController.players[rowIndex].values[buttonIndex] += 1
+            PlayerTableViewController.players[rowIndex].lastPasses.append(buttonIndex)
+            navigationItem.title = "Group Average: \(PlayerTableViewController.getGroupAvg())"
             tableView.reloadData()
         }
         else if task == "reset" {
-            players[rowIndex].reset()
+            PlayerTableViewController.players[rowIndex].reset()
             
             if getTotalPasses() == 0 {
                 navigationItem.title = "Passing Stats"
             }
             else {
-                navigationItem.title = "Group Average: \(getGroupAvg())"
+                navigationItem.title = "Group Average: \(PlayerTableViewController.getGroupAvg())"
             }
             
             tableView.reloadData()
         }
-        else if task == "undo", players[rowIndex].lastPasses.count > 0 {
-            let hist = players[rowIndex].lastPasses
+        else if task == "undo", PlayerTableViewController.players[rowIndex].lastPasses.count > 0 {
+            let hist = PlayerTableViewController.players[rowIndex].lastPasses
             let lastBtnIndex = hist[hist.count - 1]
-            players[rowIndex].values[lastBtnIndex] -= 1
-            players[rowIndex].lastPasses.remove(at: hist.count - 1)
+            PlayerTableViewController.players[rowIndex].values[lastBtnIndex] -= 1
+            PlayerTableViewController.players[rowIndex].lastPasses.remove(at: hist.count - 1)
             
             if getTotalPasses() == 0 {
                 navigationItem.title = "Passing Stats"
             }
             else {
-                navigationItem.title = "Group Average: \(getGroupAvg())"
+                navigationItem.title = "Group Average: \(PlayerTableViewController.getGroupAvg())"
             }
             
             tableView.reloadData()
         }
         else if task == "set name" {
-            print("Setting name")
-            players[rowIndex].name = name
-            visiblePlayers[rowIndex].name = name
+            PlayerTableViewController.players[rowIndex].name = name
+            PlayerTableViewController.visiblePlayers[rowIndex].name = name
         }
     }
     
     
     // MARK: Private Methods
     
-    private func getGroupAvg() -> Double {
-        if visiblePlayers.count == 0 {
+    static func getGroupAvg() -> Double {
+        if PlayerTableViewController.visiblePlayers.count == 0 {
             return 0.0
         }
         
         var sum = 0.0
         var totalPasses = 0
         
-        for p in visiblePlayers {
+        for p in PlayerTableViewController.visiblePlayers {
             sum += p.getPassesAndAvg().avg * Double(p.getPassesAndAvg().passes)
             totalPasses += p.getPassesAndAvg().passes
         }
@@ -227,7 +226,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
     private func getTotalPasses() -> Int {
         var totalPasses = 0
         
-        for p in visiblePlayers {
+        for p in PlayerTableViewController.visiblePlayers {
             totalPasses += p.getPassesAndAvg().passes
         }
         

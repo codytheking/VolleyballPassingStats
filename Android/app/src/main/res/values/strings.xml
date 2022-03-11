@@ -36,7 +36,7 @@
     <string name="rb_4p">4 Players</string>
     <string name="rb_5p">5 Players</string>
     <string name="rb_6p">6 Players</string>
-    <string name="settings_title">Choose the number of players (1-12)</string>
+    <string name="settings_title">Choose the number of players (1–12).</string>
     <string name="p7">Player 7</string>
     <string name="p8">Player 8</string>
     <string name="p9">Player 9</string>
@@ -49,6 +49,9 @@
     <string name="player10_name_hint">Player 10 name</string>
     <string name="player11_name_hint">Player 11 name</string>
     <string name="player12_name_hint">Player 12 name</string>
-    <string name="num_players_hint">1-12</string>
+    <string name="num_players_hint">1–12</string>
     <string name="clear_all_btn">Clear All</string>
+    <string name="export_data">Export Stats (Email, Google Drive, etc.).</string>
+    <string name="clear_all">Clear all stats and names.</string>
+    <string name="export_data_button">Export</string>
 </resources>

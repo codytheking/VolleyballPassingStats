@@ -33,7 +33,7 @@
     <string name="rb_4p">4 Jugadores</string>
     <string name="rb_5p">5 Jugadores</string>
     <string name="rb_6p">"6 Jugadores "</string>
-    <string name="settings_title">Elige el número de jugadores (1-12)</string>
+    <string name="settings_title">Elige el número de jugadores (1–12).</string>
     <string name="p7">Jugador 7</string>
     <string name="p8">Jugador 8</string>
     <string name="p9">Jugador 9</string>
@@ -46,6 +46,9 @@
     <string name="player10_name_hint">Nombre del Jugador 10</string>
     <string name="player11_name_hint">Nombre del Jugador 11</string>
     <string name="player12_name_hint">Nombre del Jugador 12</string>
-    <string name="num_players_hint">1-12</string>
+    <string name="num_players_hint">1–12</string>
     <string name="clear_all_btn">Limpiar Todo</string>
+    <string name="export_data">Estadísticas de exportación (Email, Google Drive, etc.).</string>
+    <string name="clear_all">Borrar todas las estadísticas y nombres.</string>
+    <string name="export_data_button">Exportar</string>
 </resources>
