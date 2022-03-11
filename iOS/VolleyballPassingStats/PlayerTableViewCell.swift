@@ -122,15 +122,30 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
         let theArray = stack.arrangedSubviews
         
         // get the "index" of the tapped button
-        let index = theArray.firstIndex(of: sender)!
+        var index = theArray.firstIndex(of: sender)!
         
-        let task = "score"
+        var task = "score"
         
         // ask the delegate (in most case, its the view controller) to
         // call the function 'scoringButtonTappedFor' on itself.
         if let _ = delegate {
             self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: "")
         }
+        
+        index = -1
+        task = "set name"
+        
+        //for index in 0...19 {
+            let name = nameTextField.text ?? ""
+            
+            //row = index
+            
+            // ask the delegate (in most case, its the view controller) to
+            // call the function 'scoringButtonTappedFor' on itself.
+            if let _ = delegate {
+                self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: name)
+            }
+        //}
     }
 }
 

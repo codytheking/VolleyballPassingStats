@@ -199,14 +199,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiI-Dc-0hz">
-                                <rect key="frame" x="132" y="701" width="150" height="30"/>
+                                <rect key="frame" x="132" y="717" width="150" height="30"/>
                                 <state key="normal" title="Cody J. King"/>
                                 <connections>
                                     <action selector="nameHyperlink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jW4-79-5dk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Js8-NK-XEA">
-                                <rect key="frame" x="157" y="739" width="100" height="40"/>
+                                <rect key="frame" x="157" y="748" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="JxJ-qV-7Ss"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="UPQ-YG-5gV"/>
@@ -215,6 +215,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Stats (Email, iCloud, etc.)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLZ-Uc-FDM">
+                                <rect key="frame" x="15" y="364" width="248" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCN-r3-zxR">
+                                <rect key="frame" x="15" y="400" width="45" height="30"/>
+                                <state key="normal" title="Export"/>
+                                <connections>
+                                    <action selector="exportData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2vL-15-cuD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -224,11 +237,15 @@
                             <constraint firstAttribute="trailing" secondItem="IWz-v4-B04" secondAttribute="trailing" id="DAV-g3-l8d"/>
                             <constraint firstItem="fju-WI-VUf" firstAttribute="leading" secondItem="Tyd-8n-YZG" secondAttribute="trailing" constant="15" id="DGC-DW-U49"/>
                             <constraint firstItem="mJK-Vy-Jtz" firstAttribute="top" secondItem="An2-Kd-18c" secondAttribute="bottom" constant="15" id="IO1-o2-Hvt"/>
+                            <constraint firstItem="oCN-r3-zxR" firstAttribute="top" secondItem="jLZ-Uc-FDM" secondAttribute="bottom" constant="15" id="IVI-9E-U3P"/>
+                            <constraint firstItem="jLZ-Uc-FDM" firstAttribute="top" secondItem="mJK-Vy-Jtz" secondAttribute="bottom" constant="60" id="Je0-og-eFM"/>
                             <constraint firstItem="An2-Kd-18c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Owe-We-1cp"/>
-                            <constraint firstItem="Js8-NK-XEA" firstAttribute="top" secondItem="IiI-Dc-0hz" secondAttribute="bottom" constant="8" symbolic="YES" id="RJz-CM-unn"/>
+                            <constraint firstItem="Js8-NK-XEA" firstAttribute="top" secondItem="IiI-Dc-0hz" secondAttribute="bottom" constant="1" id="RJz-CM-unn"/>
                             <constraint firstItem="IiI-Dc-0hz" firstAttribute="centerX" secondItem="Js8-NK-XEA" secondAttribute="centerX" id="SPr-gI-cvD"/>
                             <constraint firstItem="IiI-Dc-0hz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Soa-hM-HDr"/>
-                            <constraint firstAttribute="bottom" secondItem="IiI-Dc-0hz" secondAttribute="bottom" constant="165" id="aMS-aQ-rzn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jLZ-Uc-FDM" secondAttribute="trailing" symbolic="YES" id="U3C-Iv-Z35"/>
+                            <constraint firstItem="jLZ-Uc-FDM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="U9i-bc-BDp"/>
+                            <constraint firstItem="oCN-r3-zxR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="dlV-y0-Y3r"/>
                             <constraint firstItem="mkN-4b-MQb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="eZb-ww-7L4"/>
                             <constraint firstItem="fju-WI-VUf" firstAttribute="leading" secondItem="Tyd-8n-YZG" secondAttribute="trailing" constant="15" id="ghA-0s-IfI"/>
                             <constraint firstItem="IiI-Dc-0hz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="hAK-cE-J4w"/>
@@ -239,6 +256,8 @@
                             <constraint firstItem="An2-Kd-18c" firstAttribute="top" secondItem="Tyd-8n-YZG" secondAttribute="bottom" constant="60" id="ogv-i5-n7w"/>
                             <constraint firstItem="fju-WI-VUf" firstAttribute="top" secondItem="mkN-4b-MQb" secondAttribute="bottom" constant="15" id="pNV-gK-1Hh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="An2-Kd-18c" secondAttribute="trailing" symbolic="YES" id="spL-aV-eMO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oCN-r3-zxR" secondAttribute="trailing" symbolic="YES" id="ubc-w0-Reo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Js8-NK-XEA" secondAttribute="bottom" constant="25" id="vPh-cS-8Nw"/>
                             <constraint firstItem="mkN-4b-MQb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="yV3-9a-Jk1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -247,6 +266,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clearAllBtn" destination="mJK-Vy-Jtz" id="gcc-EM-bjj"/>
+                        <outlet property="exportBtn" destination="oCN-r3-zxR" id="2t7-4q-en5"/>
                         <outlet property="numPlayersStepper" destination="fju-WI-VUf" id="P69-Ve-lsb"/>
                         <outlet property="numPlayersTextField" destination="Tyd-8n-YZG" id="7tQ-OP-5Bw"/>
                         <outlet property="versionLabel" destination="Js8-NK-XEA" id="94r-Tx-oyG"/>

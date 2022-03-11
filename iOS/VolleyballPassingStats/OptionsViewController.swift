@@ -17,6 +17,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var numPlayersStepper: UIStepper!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var exportBtn: UIButton!
     
     static var clearAll = false
     static var numPlayers = 20
@@ -57,8 +58,33 @@ class OptionsViewController: UIViewController {
         present(refreshAlert, animated: true, completion: nil)
     }
     
+    @IBAction func exportData(_ sender: UIButton) {
+        //Set the default sharing message.
+        var message = "Here are your stats for \n\n";
+        message += "Group Average: ";
+        message += "\(PlayerTableViewController.getGroupAvg()) \n\n";
+
+        var i = 1
+        for p in PlayerTableViewController.visiblePlayers {
+            var name = p.name;
+
+            if(name.count == 0) {
+                name = "No Name (P\(i))";
+            }
+
+            message += name + "\n" + p.getStatsText() + "\n\n";
+            
+            i += 1
+        }
+        
+        let objectsToShare = [message] as [Any]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     @IBAction func nameHyperlink(_ sender: UIButton) {
-        if let url = NSURL(string: "http://codyjking.com/") {
+        if let url = NSURL(string: "https://codytheking.github.io/") {
             
             let refreshAlert = UIAlertController(title: "Open Link", message: "Go to developer's website?", preferredStyle: UIAlertController.Style.alert)
 
