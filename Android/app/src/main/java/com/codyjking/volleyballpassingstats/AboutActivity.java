@@ -9,6 +9,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class AboutActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         String versionCode = "Version v";
         try {

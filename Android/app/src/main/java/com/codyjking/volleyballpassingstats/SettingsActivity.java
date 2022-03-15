@@ -29,10 +29,8 @@ import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity {
     private StatsViewModel stats;
-    private Gson gson;
     private int numPlayersVisible;
     private EditText et_numPlayers;
-    private SharedPreferences sharedPref;
     private TextWatcher textWatcher;
 
     private final String PREF_NAME = "prefs";
@@ -53,18 +51,18 @@ public class SettingsActivity extends AppCompatActivity {
         et_numPlayers.addTextChangedListener(filterTextWatcher);
 
         // load preferences
-        sharedPref = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         numPlayersVisible = sharedPref.getInt("numPlayersVisible", NUM_PLAYERS);
 
         // set previously selected number of players
         et_numPlayers.setText("" + (numPlayersVisible));
 
-        gson = new Gson();
+        Gson gson = new Gson();
         String json = sharedPref.getString("statsObj", "");
         stats = gson.fromJson(json, StatsViewModel.class);
     }
 
-    private TextWatcher filterTextWatcher = new TextWatcher() {
+    private final TextWatcher filterTextWatcher = new TextWatcher() {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {

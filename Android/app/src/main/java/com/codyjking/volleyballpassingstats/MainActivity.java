@@ -2,12 +2,11 @@ package com.codyjking.volleyballpassingstats;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
-import android.net.Uri;
+//import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
@@ -23,13 +22,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     private StatsViewModel stats;
-    private SharedPreferences sharedPref;
     private Gson gson;
     private int numPlayersVisible;
 
@@ -40,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPref = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         gson = new Gson();
         String json = sharedPref.getString("statsObj", "");
 
-        if(!json.equals("")) {
+        if(json != null && !json.equals("")) {
             stats = gson.fromJson(json, StatsViewModel.class);
         }
-        else {
+        else  {
             // create class extending ViewModel to retain data on configuration change (e.g. screen rot)
             stats = new ViewModelProvider(this).get(StatsViewModel.class);
         }
@@ -79,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         // ATTENTION: This was auto-generated to handle app links.
-        Intent appLinkIntent = getIntent();
-        String appLinkAction = appLinkIntent.getAction();
-        Uri appLinkData = appLinkIntent.getData();
+        //Intent appLinkIntent = getIntent();
+        //String appLinkAction = appLinkIntent.getAction();
+        //Uri appLinkData = appLinkIntent.getData();
     }
 
     // Returning to this Activity
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     // Actions for menu options
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = null;
+        Intent intent;
 
         switch (item.getItemId()) {
             case R.id.action_about:
@@ -159,9 +155,10 @@ public class MainActivity extends AppCompatActivity {
         addToTotal(3, view.getTag().toString());
     }
 
+    /*
     public void clearText(View view) {
         ((TextView) view).setText("");
-    }
+    }*/
 
     // pre: none
     // post: all values are set to 0.
@@ -243,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
     // pre: none
     // post: updates sharedprefs when text is changed
-    private TextWatcher filterTextWatcher = new TextWatcher() {
+    private final TextWatcher filterTextWatcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 

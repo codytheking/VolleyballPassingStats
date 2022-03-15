@@ -3,16 +3,17 @@ package com.codyjking.volleyballpassingstats;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 
 public class StatsViewModel extends ViewModel {
-    private int[] totals;
-    private int[] numVals;
-    private double[] average;
-    private int[][] values;
-    private String[] names;
+    private final int[] totals;
+    private final int[] numVals;
+    private final double[] average;
+    private final int[][] values;
+    private final String[] names;
     private List<List<Integer>> lastPasses;  // history for undo
 
     private final int NUM_PLAYERS = 12;
@@ -40,9 +41,7 @@ public class StatsViewModel extends ViewModel {
         numVals[index] = 0;
         average[index] = 0.0;
 
-        for(int i = 0; i < values[index].length; i++) {
-            values[index][i] = 0;
-        }
+        Arrays.fill(values[index], 0);
 
         if(lastPasses.size() > 0) {
             lastPasses.set(index, new ArrayList<Integer>());
