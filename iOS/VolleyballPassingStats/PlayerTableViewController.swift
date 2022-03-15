@@ -19,6 +19,9 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set nav bar title
+        self.title = "Passing Stats"
+        
         self.tabBarController?.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
@@ -27,7 +30,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        for _ in 1...OptionsViewController.maxNumPlayers
+        for _ in 1...OptionsViewController.MAX_NUM_PLAYERS
         {
             guard let player = Player() else {
                 fatalError("Unable to instantiate Player object.")
@@ -216,8 +219,8 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
         var totalPasses = 0
         
         for p in PlayerTableViewController.visiblePlayers {
-            sum += p.getPassesAndAvg().avg * Double(p.getPassesAndAvg().passes)
-            totalPasses += p.getPassesAndAvg().passes
+            sum += p.getAvg() * Double(p.getPasses())
+            totalPasses += p.getPasses()
         }
         
         return (round(sum / Double(totalPasses) * 1000) / 1000)
@@ -227,7 +230,7 @@ class PlayerTableViewController: UITableViewController, UITabBarControllerDelega
         var totalPasses = 0
         
         for p in PlayerTableViewController.visiblePlayers {
-            totalPasses += p.getPassesAndAvg().passes
+            totalPasses += p.getPasses()
         }
         
         return totalPasses

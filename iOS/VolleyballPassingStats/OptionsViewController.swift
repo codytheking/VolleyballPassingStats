@@ -3,7 +3,7 @@
 //  VolleyballPassingStats
 //
 //  Created by Cody King on 4/26/20.
-//  Copyright © 2020 Cody J. King. All rights reserved.
+//  Copyright © 2022 Cody J. King. All rights reserved.
 //
 
 import UIKit
@@ -17,26 +17,30 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var numPlayersStepper: UIStepper!
     @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var exportBtn: UIButton!
+    @IBOutlet weak var exportCSVBtn: UIButton!
+    @IBOutlet weak var exportTXTBtn: UIButton!
+    
     
     static var clearAll = false
     static var numPlayers = 20
-    static let maxNumPlayers = 20
+    static let MAX_NUM_PLAYERS = 20
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        numPlayersStepper.maximumValue = Double(OptionsViewController.maxNumPlayers)
+        // Set nav bar title
+        self.title = "Options"
+                
+        numPlayersStepper.maximumValue = Double(OptionsViewController.MAX_NUM_PLAYERS)
         numPlayersStepper.minimumValue = 1
         numPlayersStepper.stepValue = 1
-        numPlayersStepper.value = Double(OptionsViewController.maxNumPlayers)
+        numPlayersStepper.value = Double(OptionsViewController.MAX_NUM_PLAYERS)
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         versionLabel.text = "Version: \(appVersion ?? "")"
     }
-
     
     // MARK: Actions
     
@@ -57,15 +61,85 @@ class OptionsViewController: UIViewController {
 
         present(refreshAlert, animated: true, completion: nil)
     }
+
+    @IBAction func exportTXT(_ sender: Any) {
+        askForFileNameAndExport("txt")
+    }
     
-    @IBAction func exportData(_ sender: UIButton) {
+    @IBAction func exportCSV(_ sender: Any) {
+        askForFileNameAndExport("csv")
+    }
+    
+    func askForFileNameAndExport(_ exportType: String) {
+        // Set date for filename
+        let dateFormatter = DateFormatter()
+        let date = Date()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "yyyy-MM-dd--HH-mm-ss"
+        let dateStr = dateFormatter.string(from: date)
+        let fileNamePlaceholder = "stats--\(dateStr)";
+        var inputText = "d"
+        
+        // Ask for file name
+        let alertController = UIAlertController(title: "Export", message: "Enter name for the file", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = fileNamePlaceholder
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let inputTextField = alertController.textFields?.first else { return }
+            
+            inputText = inputTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? fileNamePlaceholder
+            if(inputText.count == 0) {
+                inputText = fileNamePlaceholder
+            }
+            
+            if(exportType == "txt") {
+                self.exportAsTXT(inputText)
+            }
+            else if(exportType == "csv") {
+                self.exportAsCSV(inputText)
+            }
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // Param: filename
+    // Shares file as CSV (text, gmail, airdrop, etc.
+    func exportAsCSV(_ fn: String) {
+        
+        // Create the CSV string
+        var message = "\"Name\",\"Average\",\"No. of Passes\",\"Zeros\",\"Ones\",\"Twos\",\"Threes\",\"Total\"\n";
+
+        for p in PlayerTableViewController.players {
+            message += p.getStatsCSVText() + "\n";
+        }
+        
+        let filename = getDocumentsDirectory().appendingPathComponent("\(fn).csv")
+
+        do {
+            try message.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+        }
+        
+        // Sets the title along with the URL
+        let objectsToShare: [Any] = [filename]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func exportAsTXT(_ fn: String) {
         //Set the default sharing message.
-        var message = "Here are your stats for \n\n";
+        var message = "Here are your stats for the session:\n\n";
         message += "Group Average: ";
         message += "\(PlayerTableViewController.getGroupAvg()) \n\n";
 
         var i = 1
-        for p in PlayerTableViewController.visiblePlayers {
+        for p in PlayerTableViewController.players {
             var name = p.name;
 
             if(name.count == 0) {
@@ -77,10 +151,24 @@ class OptionsViewController: UIViewController {
             i += 1
         }
         
-        let objectsToShare = [message] as [Any]
+        let filename = getDocumentsDirectory().appendingPathComponent("\(fn).txt")
+
+        do {
+            try message.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+        }
+        
+        // Sets the title along with the URL
+        let objectsToShare: [Any] = [filename]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
     
     @IBAction func nameHyperlink(_ sender: UIButton) {

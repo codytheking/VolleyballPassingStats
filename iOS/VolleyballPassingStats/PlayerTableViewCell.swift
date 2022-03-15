@@ -3,7 +3,7 @@
 //  VolleyballPassingStats
 //
 //  Created by Cody King on 4/26/20.
-//  Copyright © 2020 Cody J. King. All rights reserved.
+//  Copyright © 2022 Cody J. King. All rights reserved.
 //
 
 import UIKit
@@ -46,7 +46,20 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     
+    // Save name in textField when clicking another button or textField
+    @IBAction func textFieldDone(_ textField: UITextField) {
+        textFieldSaveHelper(textField)
+    }
+
+    // Save name in textField when clicking "done"
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldSaveHelper(textField)
+        
+        return true
+    }
+    
+    // Save name in textField for Player object
+    func textFieldSaveHelper(_ textField: UITextField) {
         // Hide the keyboard.
         nameTextField.resignFirstResponder()
         
@@ -67,8 +80,6 @@ class PlayerTableViewCell: UITableViewCell, UITextFieldDelegate {
         if let _ = delegate {
             self.delegate?.playerTableViewCell(self, _: index, _: row, _: task, _: name)
         }
-        
-        return true
     }
      
     
