@@ -47,7 +47,11 @@ class Player {
     // MARK: Class methods
     
     func getStatsText() -> String {
-        return "Average: \(Double(round(getPassesAndAvg().avg*1000)/1000)) (\(getPassesAndAvg().passes) passes)\nZeros: \(values[0]) Ones: \(values[1]) Twos: \(values[2]) Threes: \(values[3])"
+        return "Average: \(Double(round(getAvg()*1000)/1000)) (\(getPasses()) passes)\nZeros: \(values[0]) Ones: \(values[1]) Twos: \(values[2]) Threes: \(values[3])"
+    }
+    
+    func getStatsCSVText() -> String {
+        return "\"\(name)\",\"\(Double(round(getAvg()*1000)/1000))\",\"\(getPasses())\",\"\(values[0])\",\"\(values[1])\",\"\(values[2])\",\"\(values[3])\",\"\(getSum())\""
     }
     
     func reset() {
@@ -62,7 +66,25 @@ class Player {
     }
     
     
-    func getPassesAndAvg() -> (passes: Int, avg: Double) {
+    func getPasses() -> Int {
+        var passes = 0
+        for i in 0..<values.count {
+            passes += values[i]
+        }
+        
+        return passes
+    }
+    
+    func getSum() -> Int {
+        var sum = 0
+        for i in 0..<values.count {
+            sum += i * values[i]
+        }
+        
+        return sum
+    }
+    
+    func getAvg() -> Double {
         var passes = 0
         var sum = 0
         for i in 0..<values.count {
@@ -71,9 +93,9 @@ class Player {
         }
         
         if passes == 0 {
-            return (0, 0.0)
+            return 0
         }
         
-        return (passes, (Double(sum) / Double(passes)))
+        return (Double(sum) / Double(passes))
     }
 }
