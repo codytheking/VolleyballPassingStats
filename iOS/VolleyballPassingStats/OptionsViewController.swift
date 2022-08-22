@@ -63,14 +63,14 @@ class OptionsViewController: UIViewController {
     }
 
     @IBAction func exportTXT(_ sender: Any) {
-        askForFileNameAndExport("txt")
+        askForFileNameAndExport(sender, "txt")
     }
     
     @IBAction func exportCSV(_ sender: Any) {
-        askForFileNameAndExport("csv")
+        askForFileNameAndExport(sender, "csv")
     }
     
-    func askForFileNameAndExport(_ exportType: String) {
+    func askForFileNameAndExport(_ sender: Any, _ exportType: String) {
         // Set date for filename
         let dateFormatter = DateFormatter()
         let date = Date()
@@ -94,10 +94,10 @@ class OptionsViewController: UIViewController {
             }
             
             if(exportType == "txt") {
-                self.exportAsTXT(inputText)
+                self.exportAsTXT(sender, inputText)
             }
             else if(exportType == "csv") {
-                self.exportAsCSV(inputText)
+                self.exportAsCSV(sender, inputText)
             }
         }
         alertController.addAction(confirmAction)
@@ -108,7 +108,7 @@ class OptionsViewController: UIViewController {
     
     // Param: filename
     // Shares file as CSV (text, gmail, airdrop, etc.
-    func exportAsCSV(_ fn: String) {
+    func exportAsCSV(_ sender: Any, _ fn: String) {
         
         // Create the CSV string
         var message = "\"Name\",\"Average\",\"No. of Passes\",\"Zeros\",\"Ones\",\"Twos\",\"Threes\",\"Total\"\n";
@@ -129,10 +129,14 @@ class OptionsViewController: UIViewController {
         let objectsToShare: [Any] = [filename]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+        
+        // add a sourceView to your popoverPresentationController (crash on iPad without this)
+        activityVC.popoverPresentationController?.sourceView = sender as? UIView
+        
         self.present(activityVC, animated: true, completion: nil)
     }
     
-    func exportAsTXT(_ fn: String) {
+    func exportAsTXT(_ sender: Any, _ fn: String) {
         //Set the default sharing message.
         var message = "Here are your stats for the session:\n\n";
         message += "Group Average: ";
@@ -163,6 +167,10 @@ class OptionsViewController: UIViewController {
         let objectsToShare: [Any] = [filename]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+        
+        // add a sourceView to your popoverPresentationController (crash on iPad without this)
+        activityVC.popoverPresentationController?.sourceView = sender as? UIView
+        
         self.present(activityVC, animated: true, completion: nil)
     }
     
