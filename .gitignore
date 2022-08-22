@@ -24,7 +24,6 @@ Assets.xcassets
 *.gradle
 Android/local.properties
 Android/.idea
-.DS_Store
 Android/build
 Android/captures
 *.externalNativeBuild
@@ -38,7 +37,8 @@ Android/settings.gradle
 Android/app/build/
 Android/app/proguard-rules.pro
 Android/app/release/
-app/src/androidTest/
-app/src/test/
+Android/app/src/androidTest/
+Android/app/src/test/
+Android/app/instant/
 Android/app/installed
 
