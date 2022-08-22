@@ -37,6 +37,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.codyjking.volleyballpassingstats.MainActivity" />
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.codyjking.volleyballpassingstats.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
     </application>
 
 </manifest>

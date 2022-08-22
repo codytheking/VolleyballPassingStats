@@ -44,7 +44,7 @@ public class StatsViewModel extends ViewModel {
         Arrays.fill(values[index], 0);
 
         if(lastPasses.size() > 0) {
-            lastPasses.set(index, new ArrayList<Integer>());
+            lastPasses.set(index, new ArrayList<>());
         }
     }
 
@@ -53,7 +53,7 @@ public class StatsViewModel extends ViewModel {
         if(lastPasses.size() == 0) {
             lastPasses = new ArrayList<>(NUM_PLAYERS);
             for (int i = 0; i < NUM_PLAYERS; i++) {
-                lastPasses.add(new ArrayList<Integer>());
+                lastPasses.add(new ArrayList<>());
             }
         }
 
@@ -107,7 +107,7 @@ public class StatsViewModel extends ViewModel {
         if(lastPasses.size() == 0) {
             lastPasses = new ArrayList<>(NUM_PLAYERS);
             for (int i = 0; i < NUM_PLAYERS; i++) {
-                lastPasses.add(new ArrayList<Integer>());
+                lastPasses.add(new ArrayList<>());
             }
         }
         lastPasses.get(index).add(val);
@@ -129,7 +129,7 @@ public class StatsViewModel extends ViewModel {
 
         if(lastPasses.size() == 0) {
             for (int i = 0; i < NUM_PLAYERS; i++) {
-                lastPasses.add(new ArrayList<Integer>());
+                lastPasses.add(new ArrayList<>());
             }
         }
 
@@ -158,5 +158,10 @@ public class StatsViewModel extends ViewModel {
 
         return ("Average: " + average[index] + " (" + numVals[index] + " passes)\nZeros: " + values[index][0] +
                 " Ones: " + values[index][1] + " Twos: " + values[index][2] + " Threes: " + values[index][3]);
+    }
+
+    public String generateCsvExportText(int index) {
+        return ("\"" + getName(index + 1) + "\",\""  + average[index] + "\",\"" + numVals[index] + "\",\"" + values[index][0] +
+                "\",\"" + values[index][1] + "\",\"" + values[index][2] + "\",\"" + values[index][3] + "\"\n");
     }
 }

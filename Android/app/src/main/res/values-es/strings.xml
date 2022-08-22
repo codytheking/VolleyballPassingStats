@@ -12,8 +12,8 @@
     <string name="about">Acerca de</string>
     <string name="title_activity_about">Acerca de Estadísticas de pase de voleibol</string>
     <string name="about_title">Estadísticas de pase de voleibol</string>
-    <string name="copyright">Derechos de Autor © 2020 Cody J. King. Todos Los Derechos Reservados</string>
-    <string name="privacy_policy_link"><a href="http://codyjking.com/privacy-policy.html">Política de Privacidad</a></string>
+    <string name="copyright">Derechos de Autor © 2022 Cody J. King. Todos Los Derechos Reservados</string>
+    <string name="privacy_policy_link"><a href="https://codytheking.github.io/privacy-policy.html">Política de Privacidad</a></string>
     <string name="version">Versión v</string>
     <string name="about_icon_description">Icono de la Aplicación</string>
     <string name="player1_name_hint">Nombre del Jugador 1</string>
@@ -50,5 +50,6 @@
     <string name="clear_all_btn">Limpiar Todo</string>
     <string name="export_data">Estadísticas de exportación (Email, Google Drive, etc.).</string>
     <string name="clear_all">Borrar todas las estadísticas y nombres.</string>
-    <string name="export_data_button">Exportar</string>
+    <string name="export_txt_button">.TXT</string>
+    <string name="export_csv_button">.CSV</string>
 </resources>

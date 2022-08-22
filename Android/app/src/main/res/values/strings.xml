@@ -19,8 +19,8 @@
     <string name="about">About</string>
     <string name="title_activity_about">About Volleyball Passing Stats</string>
     <string name="about_title">Volleyball Passing Stats</string>
-    <string name="copyright">Copyright © 2020 Cody J. King. All rights reserved.</string>
-    <string name="privacy_policy_link"><a href="http://codyjking.com/privacy-policy.html">Privacy Policy</a></string>
+    <string name="copyright">Copyright © 2022 Cody J. King. All rights reserved.</string>
+    <string name="privacy_policy_link"><a href="https://codytheking.github.io/privacy-policy.html">Privacy Policy</a></string>
     <string name="version">Version v</string>
     <string name="about_icon_description">App icon</string>
     <string name="player1_name_hint">Player 1 Name</string>
@@ -53,5 +53,6 @@
     <string name="clear_all_btn">Clear All</string>
     <string name="export_data">Export Stats (Email, Google Drive, etc.).</string>
     <string name="clear_all">Clear all stats and names.</string>
-    <string name="export_data_button">Export</string>
+    <string name="export_txt_button">TXT</string>
+    <string name="export_csv_button">CSV</string>
 </resources>
